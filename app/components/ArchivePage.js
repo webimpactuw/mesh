@@ -1,9 +1,12 @@
 export default function ArchivePage() {
     return (
         <div>
-            <header className="text-center font-bold p-10 mb-10 text-2xl">
+            <header className="text-center font-bold p-10 pb-5 text-2xl">
                 <h1>MESH ARCHIVE</h1>
             </header>
+            <div className="text-center mb-10">
+                <p1>View Photo Albums of past MESH events</p1>
+            </div>
             <div className="flex flex-row-reverse mr-20 ">
                 <button class="bg-slate-300 rounded-lg w-24">sort by &#8595;</button>
             </div>
@@ -34,4 +37,6 @@ export default function ArchivePage() {
         </div>
     );
  }
+
+
 }
