@@ -1,8 +1,20 @@
-import { Inter } from "next/font/google";
+import { Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import localFont from "next/font/local"
+import Footer from "./components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const fabulous = localFont({
+  src: '/static-fonts/fabulous.otf',
+  display: 'swap',
+})
+
+const jost = Jost({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400'
+})
+
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +25,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       
-      <body className={inter.className}><Navbar/>{children} </body>
+      <body className={jost.className}>
+        <div className={fabulous.className}>
+          <Navbar/>
+        </div>
+        {children} 
+        <div>
+          <Footer/>
+        </div>
+      </body>
     </html>
   );
 }
