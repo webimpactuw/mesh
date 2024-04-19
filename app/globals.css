@@ -61,3 +61,8 @@ body {
   padding: 10px; 
 }*/
 
+.line {
+  height: 0.25rem;
+  background: #E58394;
+  margin-bottom: 0.75rem;
+}
