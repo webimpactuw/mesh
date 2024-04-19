@@ -12,7 +12,7 @@ const fabulous = localFont({
 const jost = Jost({
   subsets: ['latin'],
   display: 'swap',
-  weight: '400'
+  weight: ['300', '400'], 
 })
 
 
