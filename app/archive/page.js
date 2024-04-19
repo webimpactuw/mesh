@@ -24,7 +24,7 @@ function ArchiveBlock() {
         {
             title: "The scene",
             date: "2/24/2024",
-            picture: "/images/Arch1.JPG",
+            picture: "/images/Arch1.png",
             alt: "tbd",
             program: "links tbd",
             
@@ -32,7 +32,7 @@ function ArchiveBlock() {
         {
             title: "Event Title",
             date: "XX/XX/XXXX",
-            picture: "/images/Arch2.jpeg",
+            picture: "/images/Arch2.png",
             alt: "tbd",
             program: "links tbd",
             
@@ -48,7 +48,7 @@ function ArchiveBlock() {
         {
             title: "Event Title",
             date: "XX/XX/XXXX",
-            picture: "/images/Arch4.jpeg",
+            picture: "/images/Arch4.png",
             alt: "tbd",
             program: "links tbd",
             
@@ -56,7 +56,7 @@ function ArchiveBlock() {
         {
             title: "Event Title",
             date: "XX/XX/XXXX",
-            picture: "/images/Arch5.jpeg",
+            picture: "/images/Arch5.png",
             alt: "tbd",
             program: "links tbd",
             
@@ -64,7 +64,7 @@ function ArchiveBlock() {
         {
             title: "Event Title",
             date: "XX/XX/XXXX",
-            picture: "/images/Arch6.jpeg",
+            picture: "/images/Arch6.png",
             alt: "tbd",
             program: "links tbd",
             
@@ -74,8 +74,8 @@ function ArchiveBlock() {
         <ul className="grid grid-cols-3">
         {archivesInfo.map((archive) => (
             <div >
-                <div className="p-10">
-                    <img src={archive.picture} width="300" height="300" alt="When images are added, this should have real alt text" />
+                <div className="">
+                    <img src={archive.picture} className="object-fit" width="346" height="346" alt="When images are added, this should have real alt text" />
                 </div>
                 <div className="ml-14 inline-block text-white">
                     <p >{archive.date} {archive.title}</p>
