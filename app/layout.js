@@ -12,7 +12,7 @@ const fabulous = localFont({
 const jost = Jost({
   subsets: ['latin'],
   display: 'swap',
-  weight: '400'
+  weight: ['300', '400', '600'], 
 })
 
 
@@ -26,6 +26,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body className={jost.className}>
+
+        <div className="banner text-center text-white p-2 flex flex-row justify-center items-center font-bold">
+          <h2 className="text-lg pr-3">
+            MESH Fashion Show is coming this May
+          </h2>
+          <button className="bg-white text-black font-light rounded-full px-4 py-1 flex flex-row items-center">
+            View Event
+            <img src="arrow-right.png" className="h-3 ml-2"></img>
+          </button>
+        </div>
+
         <div className={fabulous.className}>
           <Navbar/>
         </div>
