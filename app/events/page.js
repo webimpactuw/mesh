@@ -1,10 +1,18 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
+import React from 'react';
 import Image from 'next/image';
 import LearnButton from './components/LearnButton';
 import Events from './components/Events';
 import Navbar from '../components/Navbar';
 
+
+import EventsMap from './components/EventMap';
+
 export default function events() {
+
+  
+  
   return (
     <div class="w-full h-full bg-[#121212]">
        <Navbar/>
@@ -26,23 +34,10 @@ export default function events() {
       </div>
 
       <div class="flex flex-col ml-28">
-        <div id="button" class=" space-x-4 mr-28 m-auto text-[#050505]">
-          <button class="mr-4 px-10 rounded-full bg-[#43B697]"> <div class="flex flex-row gap-x-2">sort by <div class="pt-1"><img src="/↓.png" alt="arrow" class="h-4"/></div></div> </button>
-          
-        </div>
         
 
-      <div class="flex flex-row gap-x-16 pt-4">
-        <Events imageUrl={'/hat.png'} title={"Modeling Workshop"} date={"4/4/2024"}/>
-        <Events imageUrl={'/cowboy.png'} title={"Next Event"} date={"X/X/20XX"}/>
-        <Events imageUrl={'/runway.jpg'} title={"Next Event"} date={"X/X/20XX"}/>
-      </div>
 
-      <div class="flex flex-row gap-x-16 pt-4">
-        <Events imageUrl={'/blue.jpg'} title={"Next Event"} date={"X/X/20XX"}/>
-        <Events imageUrl={'/phone.jpg'} title={"Next Event"} date={"X/X/20XX"}/>
-        <Events imageUrl={'/red.png'} title={"Next Event"} date={"X/X/20XX"}/>
-      </div>
+      <EventsMap />
         
         
       </div>

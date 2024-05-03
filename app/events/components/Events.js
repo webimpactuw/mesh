@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import LearnButton from "./LearnButton";
 
-export default function Events( {imageUrl, title, date}) {
+export default function events({imageUrl, title, date}) {
     return (
         <div class="overflow-hidden">
             <div class="flex flex-row justify-between pb-2">
@@ -11,6 +10,7 @@ export default function Events( {imageUrl, title, date}) {
             </div>
             
             <div class=" w-96 overflow-hidden  h-56 border-2 border-cyan-50">
+
 
             <img src={imageUrl} alt="model"/>
         </div>
