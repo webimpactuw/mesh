@@ -3,7 +3,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-		domains: ['cdn.sanity.io']
+		remotePatterns: [
+			{
+			  protocol: "https",
+			  hostname: "scontent.cdninstagram.com",
+			  port: "",
+			},
+		  ],
+		domains: ['cdn.sanity.io', 'scontent-sea1-1.cdninstagram.com'],
 	}
 }
 
