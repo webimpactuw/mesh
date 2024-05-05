@@ -70,3 +70,15 @@ body {
 .banner {
   background: #E58394;
 }
+
+.button-color {
+  background-color: #43B697;
+}
+
+.input-border {
+  border-color: #43B697;
+}
+
+.page-reference-color {
+  color: #43B697;
+}
