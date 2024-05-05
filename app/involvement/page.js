@@ -1,5 +1,4 @@
 import localFont from "next/font/local"
-import Link from 'next/link'
 const fabulous = localFont({
     src: '../static-fonts/fabulous.otf',
     display: 'swap',
@@ -22,9 +21,9 @@ export default function Home() {
           <div className="px-2">
             {/* <label className="text-lg" for="username">
             </label> */}
-            <input className=" text-white align-center rounded-full bg-black shadow appearance-none border border-green-500 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Your Email Address"/>
+            <input className=" placeholder:text-white align-center rounded-full bg-black shadow appearance-none border input-border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Your Email Address"/>
           </div>
-          <button className="bg-green-500 hover:bg-white text-black py-2 px-8 rounded-full focus:outline-none focus:shadow-outline" type="button">
+          <button className="button-color hover:bg-white text-black py-2 px-8 rounded-full focus:outline-none focus:shadow-outline" type="button">
             Subscribe
           </button>
         </div>
@@ -36,29 +35,37 @@ export default function Home() {
           </div>
 
           <div className="flex flex-row justify-center mb-6 space-x-10 mx-24">
-            <div className="relative">
-            <p className="text-white text-center font-light text-2xl pt-2">Creative Assistant</p>
-              <img src="creative-assistant.png" alt="Creative Assistant" className="border border-solid border-white"></img>
-              <div className="flex flex-row items-center justify-center">
-                <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
-                <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
-              </div>
-              
-            </div>
-
             <div className="">
-              <p className="text-white text-center font-light text-2xl pt-2">Media Intern</p>
-              <img src="media-intern.png" alt="Media Intern" className="border border-solid border-white"></img>
-              <div className="flex flex-row items-center justify-center">
+              <p className="text-white text-center font-light text-2xl pt-2">Creative Assistant</p>
+              <img src="creative-assistant.png" alt="Creative Assistant" className="border border-solid border-white"></img>
+              <div className="flex flex-row items-center justify-center py-4">
                 <div class="flex">
                   <div className="inline-flex">
                     <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
                     <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
                   </div>
-                  <div>
-                    <button className="bg-green-500 hover:bg-white text-black px-10 rounded-full focus:outline-none focus:shadow-outline" type="button">
-                    Link
-                  </button>
+                  <div className="flex flex-col items-center justify-center pl-4">
+                    <button className="button-color hover:bg-white text-black px-24 py-0.25 rounded-full focus:outline-none focus:shadow-outline" type="button">
+                      apply
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="">
+              <p className="text-white text-center font-light text-2xl pt-2">Media Intern</p>
+              <img src="media-intern.png" alt="Media Intern" className="border border-solid border-white"></img>
+              <div className="flex flex-row items-center justify-center py-4">
+                <div class="flex">
+                  <div className="inline-flex">
+                    <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
+                    <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
+                  </div>
+                  <div className="flex flex-col items-center justify-center pl-4">
+                    <button className="button-color hover:bg-white text-black px-24 py-0.25 rounded-full focus:outline-none focus:shadow-outline" type="button">
+                      apply
+                    </button>
                   </div>
                 </div>
               </div>
@@ -67,17 +74,27 @@ export default function Home() {
             <div className="">
               <p className="text-white text-center font-light text-2xl pt-2">Model</p>
               <img src="model.png" alt="Model" className="border border-solid border-white"></img>
-              <div className="flex flex-row items-center justify-center">
-                <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
-                <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
+              <div className="flex flex-row justify-center py-4">
+                <div class="flex">
+                  <div className="inline-flex">
+                    <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
+                    <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
+                  </div>
+                  <div className="flex flex-col items-center justify-center pl-4">
+                    <button className="button-color hover:bg-white text-black px-24 py-0.25 rounded-full focus:outline-none focus:shadow-outline" type="button">
+                    apply
+                  </button>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
 
       
-        <div className="flex mx-auto w-1/2 justify-center items-center">
+        <div className="flex mx-auto w-1/2 justify-center items-center pb-16">
         <div className="flex justify-center items-center">
           <div>
             <p className="text-center font-light p-10 pb-5 text-3xl text-white"> 
@@ -88,7 +105,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-          <button className="bg-green-500 hover:bg-white text-black py-2 px-8 rounded-full focus:outline-none focus:shadow-outline" type="button">
+          <button className="button-color hover:bg-white text-black py-2 px-8 rounded-full focus:outline-none focus:shadow-outline" type="button">
             Link
           </button>
         </div>
