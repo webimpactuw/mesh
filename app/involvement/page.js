@@ -21,9 +21,9 @@ export default function Home() {
           <div className="px-2">
             {/* <label className="text-lg" for="username">
             </label> */}
-            <input className=" placeholder:text-white align-center rounded-full bg-black shadow appearance-none border input-border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Your Email Address"/>
+            <input className="text-2xl placeholder:text-white text-white align-center rounded-full bg-black shadow appearance-none border input-border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Your Email Address"/>
           </div>
-          <button className="button-color hover:bg-white text-black py-2 px-8 rounded-full focus:outline-none focus:shadow-outline" type="button">
+          <button className="text-2xl	button-color hover:bg-white text-black py-2 px-8 rounded-full focus:outline-none focus:shadow-outline" type="button">
             Subscribe
           </button>
         </div>
@@ -36,7 +36,7 @@ export default function Home() {
 
           <div className="flex flex-row justify-center mb-6 space-x-10 mx-24">
             <div className="">
-              <p className="text-white text-center font-light text-2xl pt-2">Creative Assistant</p>
+              <p className="text-white text-center font-light text-2xl py-4">Creative Assistant</p>
               <img src="creative-assistant.png" alt="Creative Assistant" className="border border-solid border-white"></img>
               <div className="flex flex-row items-center justify-center py-4">
                 <div class="flex">
@@ -54,7 +54,7 @@ export default function Home() {
             </div>
 
             <div className="">
-              <p className="text-white text-center font-light text-2xl pt-2">Media Intern</p>
+              <p className="text-white text-center font-light text-2xl py-4">Media Intern</p>
               <img src="media-intern.png" alt="Media Intern" className="border border-solid border-white"></img>
               <div className="flex flex-row items-center justify-center py-4">
                 <div class="flex">
@@ -72,7 +72,7 @@ export default function Home() {
             </div>
 
             <div className="">
-              <p className="text-white text-center font-light text-2xl pt-2">Model</p>
+              <p className="text-white text-center font-light text-2xl py-4">Model</p>
               <img src="model.png" alt="Model" className="border border-solid border-white"></img>
               <div className="flex flex-row justify-center py-4">
                 <div class="flex">
@@ -105,10 +105,15 @@ export default function Home() {
             </p>
           </div>
         </div>
-          <button className="button-color hover:bg-white text-black py-2 px-8 rounded-full focus:outline-none focus:shadow-outline" type="button">
+        <div className="flex flex-col items-center justify-center">
+
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <button className="text-4xl button-color hover:bg-white text-black py-2 px-16 rounded-full focus:outline-none focus:shadow-outline" type="button">
             Link
           </button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
