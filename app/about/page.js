@@ -236,20 +236,28 @@ const members = [
 {/* FAQS AND ANSWERS */}
 const questions = [
   {
-    question: 'Does Mesh have office hours?',
+    question: 'What does MESH do?',
+    answer: 'We host workshops (especially for beginners!), general meetings, a Winter quarter expo, and a Spring quarter signature fashion show.',
+  },
+  {
+    question: 'Who can be in MESH? How do I officially join?',
+    answer: 'MESH is open to everyone! Anyone can be part of MESH if they identify as such and come to some of our events. However, as we are a UW RSO, our activities are aimed primarily at UW students. General participation is open, but our teams are by application.',
+  },
+  {
+    question: 'Does MESH have office hours?',
     answer: 'Yes. Come to MESH Office Hours every Friday 5-7PM in the MILL!',
   },
   {
-    question: 'When’s the quarterly meeting?',
-    answer: 'Answer to Question 2.',
+    question: 'What are the MESH teams?',
+    answer: 'Current yearlong teams: media (photography & videography) and creative. Current event-specific teams: set design, BTS (behind the scenes), modeling, and designing.',
   },
   {
-    question: 'How competitive is it to get into Mesh?',
-    answer: 'Answer to Question 3.',
+    question: 'Where can I find the application form to join a MESH team?',
+    answer: 'Team applications are open throughout the year and are announced on Instagram and Discord.',
   },
   {
-    question: 'Where can I find the application form?',
-    answer: 'Answer to Question 4.',
+    question: 'What is it like being on a MESH team?',
+    answer: 'Most of our teams focus on big events, but also lend a hand with day-to-day operations. All of our teams require an application; most are open to all skill levels (seriously, please apply no matter your background!) but some like the media team do require previous experience. All of our team members are volunteers.'
   }
 ];
 
