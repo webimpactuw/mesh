@@ -85,4 +85,87 @@ body {
   height: 100%;
   width: 100%;
   object-fit: cover;
+.button-color {
+  background-color: #43B697;
+}
+
+.input-border {
+  border-color: #43B697;
+}
+
+.page-reference-color {
+  color: #43B697;
+}
+
+/* Headshot styling for About Us */
+.headshot {
+  float: left;
+  width: 40%;
+}
+
+/* Member info for About Us */
+.member-info {
+  float: right;
+  width: 50%;
+}
+
+/* About Us FAQs Wrapper */
+.wrapper {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-wrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 45%
+}
+
+.right-wrapper {
+  display: flex;
+  width: 100vw;
+  justify-content: end;
+  align-items: center;
+  width: 45%
+}
+
+/* About Us FAQs Accordian */
+.accordian {
+  width: 500px;
+}
+
+/* About Us FAQs Title */
+.title {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* About Us FAQs Answer Hidden */
+.content {
+  color: black;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+/* About Us FAQs Answer Shown */
+.content-show {
+  color: black;
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+/* About Us FAQs Pink Styling */
+.item {
+  background: #E58394;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
