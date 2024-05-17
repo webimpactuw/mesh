@@ -94,10 +94,10 @@ function ArchiveBlock({sortBy}) {
         return sortBy === 'oldest' ? dateA - dateB : dateB - dateA;
     });
     return (
-        <ul className="grid grid-cols-1 md:grid-cols-3 lg:gap-4 place-content-center">
+        <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 items-center">
         {sortedArchives.map((archive, index) => (
             <div>
-                <div className="">
+                <div className="flex items-center">
                     <img src={archive.picture} className="border-2 h-80 w-80 m-10 mb-5" alt={archive.alt} />
                 </div>
                 <div className="flex justify-center ml-10 w-80 text-white text-2xl">
