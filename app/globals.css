@@ -70,3 +70,19 @@ body {
 .banner {
   background: #E58394;
 }
+
+.aspect-square {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.aspect-square-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
