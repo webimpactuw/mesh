@@ -1,4 +1,6 @@
+"use client"
 import localFont from "next/font/local"
+import React, { useState } from "react";
 import Link from 'next/link'
 const fabulous = localFont({
     src: '../static-fonts/fabulous.otf',
@@ -7,20 +9,26 @@ const fabulous = localFont({
 
 
 export default function ArchivePage() {
+    const [sortBy, setSortBy] = useState('oldest');
 
+    const toggleSort = () => {
+        setSortBy(sortBy === 'oldest' ? 'newest' : 'oldest');
+    };
     return (
         <div className="bg-black">
             <header className="text-center font-bold p-10 pb-5 text-4xl text-white">
-                <h1 className={fabulous.className}>MESH ARCHIVE</h1>
+                <h1 className={fabulous.className}>ARCHIVE</h1>
             </header>
             <div className="text-center mb-10 text-white">
                 <p1>View photo albums and program booklets from past MESH events</p1>
             </div>
-            <div className="flex flex-row-reverse mr-20 ">
-                <button class="bg-[#43B697] rounded-lg w-32 text-xl">sort by &nbsp;&#8595;</button>
+            <div className="flex flex-row-reverse mr-10 mb-10">
+                <button class="bg-[#43B697] rounded-lg w-40 p-1 text-xl" onClick={toggleSort}>
+                    sort by {sortBy === 'oldest' ? 'newest' : 'oldest'} &nbsp;&#8595;
+                </button>
             </div>
             <div>
-                <ArchiveBlock/>
+                <ArchiveBlock sortBy={sortBy}/>
             </div>
         </div>
     );
@@ -29,11 +37,11 @@ export default function ArchivePage() {
 }
 
 
-function ArchiveBlock() {
-    const archivesInfo = [
+function ArchiveBlock({sortBy}) {
+    const [archivesInfo, setArchivesInfo] = useState([
         {
             title: "The scene",
-            date: "02/24/2024",
+            date: "2024-02-24",
             picture: "/images/Arch1.png",
             alt: "tbd",
             program: "links tbd",
@@ -41,7 +49,7 @@ function ArchiveBlock() {
         },
         {
             title: "Event Title",
-            date: "XX/XX/XXXX",
+            date: "2024-02-25",
             picture: "/images/Arch2.png",
             alt: "tbd",
             program: "links tbd",
@@ -49,7 +57,7 @@ function ArchiveBlock() {
         },
         {
             title: "Event Title",
-            date: "XX/XX/XXXX",
+            date: "2024-02-26",
             picture: "/images/Arch3.png",
             alt: "tbd",
             program: "links tbd",
@@ -57,7 +65,7 @@ function ArchiveBlock() {
         },
         {
             title: "Event Title",
-            date: "XX/XX/XXXX",
+            date: "2024-02-27",
             picture: "/images/Arch4.png",
             alt: "tbd",
             program: "links tbd",
@@ -65,7 +73,7 @@ function ArchiveBlock() {
         },
         {
             title: "Event Title",
-            date: "XX/XX/XXXX",
+            date: "2024-02-28",
             picture: "/images/Arch5.png",
             alt: "tbd",
             program: "links tbd",
@@ -73,27 +81,29 @@ function ArchiveBlock() {
         },
         {
             title: "Event Title",
-            date: "XX/XX/XXXX",
+            date: "2024-02-29",
             picture: "/images/Arch6.png",
             alt: "tbd",
             program: "links tbd",
             
         },
-    ];
+    ]);
+    const sortedArchives = [...archivesInfo].sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return sortBy === 'oldest' ? dateA - dateB : dateB - dateA;
+    });
     return (
-        <ul className="grid grid-cols-3 ">
-        {archivesInfo.map((archive) => (
-            <div >
-                <div className="">
+        <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 items-center">
+        {sortedArchives.map((archive, index) => (
+            <div>
+                <div className="flex justify-center">
                     <img src={archive.picture} className="border-2 h-80 w-80 m-10 mb-5" alt={archive.alt} />
                 </div>
-                <div className="ml-20 justify-items-center text-white text-2xl">
-                    <p >{archive.date} {archive.title}</p>
-                </div>
-                <div className="grid place-content-center mt-1 text-base">
-                    <Link href="#" className="inline-flex">
-                        <p className="rounded-full px-5 text-white">view program</p>
-                        <img src="/images/ButtonArrow.png" className=" pr-5 pb-5 w-14 h-14"></img>
+                <div className="flex justify-center text-white text-2xl">
+                    <Link href="#" className="flex flew-row">
+                        <p>{archive.title}</p>
+                        <img src="link_arrow.png" className="pl-3 h-10"></img>
                     </Link>
                 </div>
             </div>   
