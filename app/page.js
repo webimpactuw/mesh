@@ -12,6 +12,7 @@ const fabulous = localFont({
 
 export default function Home() {
   return (
+
     <div>
 
       {/* Home Gallery */}
