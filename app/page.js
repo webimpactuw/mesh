@@ -28,6 +28,7 @@ export default async function Home() {
   const events = await getEvents();
 
   return (
+
     <div>
       {/* Home Gallery */}
       <div className="pt-4">
