@@ -13,12 +13,14 @@ const fabulous = localFont({
 export default function Home() {
   return (
     <div>
+
+      {/* Home Gallery */}
       <div className="pt-4">
         <div className="flex flex-row justify-between overflow-x-auto">
           <img src="/images/home1.png" className="h-72 sm:h-96 pr-2" alt="Mesh fashion show"></img>
           <img src="/images/home2.png" className="h-72 sm:h-96 px-2" alt="Mesh representatives"></img>
           <img src="/images/home3.png" className="h-72 sm:h-96 px-2" alt="Mesh fashion show"></img>
-          <img src="/images/home4.png" className="h-60 sm:h-96 pl-2" alt="Mesh fashion show"></img>
+          <img src="/images/home4.png" className="h-72 sm:h-96 pl-2" alt="Mesh fashion show"></img>
         </div>
         <div className="mt-5 text-white text-center text-xl mb-5">
           <p className="text-md">
@@ -29,13 +31,13 @@ export default function Home() {
 
 
       
-
+      {/* Events */}
       <div className="flex flex-col justify-center latest-events content-center items-center">
         <div className={fabulous.className}>
           <h1 className="text-center text-white text-3xl m-4">Upcoming Events</h1>
         </div>
 
-        <div className="flex flex-row justify-center mb-6 space-x-10 mx-24">
+        <div className="flex flex-row justify-center mb-6 space-x-10 mx-12 sm:mx-24">
           <div className="items-center">
             <div className="line"></div>
             <img src="latest_left.png" alt="Mesh event" className="border border-solid border-white"></img>
@@ -79,7 +81,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-4 mx-24">
+
+      {/* Instagram Feed */}
+      <div className="mb-4 mx-12 sm:mx-24">
         <div className={fabulous.className}>
           <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
         </div>
@@ -97,6 +101,7 @@ export default function Home() {
   );
 }
 
+// Instagram Feed
 async function InstagramFeed() {
 
   let instagramFeed = null;

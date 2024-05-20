@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       
       <body className={jost.className}>
 
-        <div className="banner text-center text-white p-2 flex flex-row justify-center items-center font-bold">
+        <div className="hidden banner text-center text-white p-2 flex flex-row justify-center items-center font-bold">
           <h2 className="text-lg pr-3">
             MESH Fashion Show is coming this May
           </h2>
