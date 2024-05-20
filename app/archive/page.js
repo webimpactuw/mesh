@@ -1,42 +1,113 @@
+"use client"
+import localFont from "next/font/local"
+import React, { useState } from "react";
+import Link from 'next/link'
+const fabulous = localFont({
+    src: '../static-fonts/fabulous.otf',
+    display: 'swap',
+})
+
+
 export default function ArchivePage() {
+    const [sortBy, setSortBy] = useState('oldest');
+
+    const toggleSort = () => {
+        setSortBy(sortBy === 'oldest' ? 'newest' : 'oldest');
+    };
     return (
-        <div>
-            <header className="text-center font-bold p-10 pb-5 text-2xl">
-                <h1>MESH ARCHIVE</h1>
+        <div className="bg-black">
+            <header className="text-center font-bold p-10 pb-5 text-4xl text-white">
+                <h1 className={fabulous.className}>ARCHIVE</h1>
             </header>
-            <div className="text-center mb-10">
-                <p1>View Photo Albums of past MESH events</p1>
+            <div className="text-center mb-10 text-white">
+                <p1>View photo albums and program booklets from past MESH events</p1>
             </div>
-            <div className="flex flex-row-reverse mr-20 ">
-                <button class="bg-slate-300 rounded-lg w-24">sort by &#8595;</button>
+            <div className="flex flex-row-reverse mr-10 mb-10">
+                <button class="bg-[#43B697] rounded-lg w-40 p-1 text-xl" onClick={toggleSort}>
+                    sort by {sortBy === 'oldest' ? 'newest' : 'oldest'} &nbsp;&#8595;
+                </button>
             </div>
-            <div className="grid grid-cols-3">
-                <Block />
-                <Block />
-                <Block />
-                <Block />
-                <Block />
-                <Block />
-
+            <div>
+                <ArchiveBlock sortBy={sortBy}/>
             </div>
         </div>
     );
-
- function Block() {
-    return (
-        <div>
-            <div className="p-10">
-                <img src="tempImage.jpg" width="300" height="300" alt="When images are added, this should have real alt text" />
-            </div>
-            <div className="ml-14 inline-block">
-                <p>Title / Date</p>
-            </div>
-            <div className="ml-5 inline-block">
-                <button class="bg-slate-300 rounded-full px-5">view program</button>
-            </div>
-        </div>
-    );
- }
 
 
 }
+
+
+function ArchiveBlock({sortBy}) {
+    const [archivesInfo, setArchivesInfo] = useState([
+        {
+            title: "The scene",
+            date: "2024-02-24",
+            picture: "/images/Arch1.png",
+            alt: "tbd",
+            program: "links tbd",
+            
+        },
+        {
+            title: "Event Title",
+            date: "2024-02-25",
+            picture: "/images/Arch2.png",
+            alt: "tbd",
+            program: "links tbd",
+            
+        },
+        {
+            title: "Event Title",
+            date: "2024-02-26",
+            picture: "/images/Arch3.png",
+            alt: "tbd",
+            program: "links tbd",
+            
+        },
+        {
+            title: "Event Title",
+            date: "2024-02-27",
+            picture: "/images/Arch4.png",
+            alt: "tbd",
+            program: "links tbd",
+            
+        },
+        {
+            title: "Event Title",
+            date: "2024-02-28",
+            picture: "/images/Arch5.png",
+            alt: "tbd",
+            program: "links tbd",
+            
+        },
+        {
+            title: "Event Title",
+            date: "2024-02-29",
+            picture: "/images/Arch6.png",
+            alt: "tbd",
+            program: "links tbd",
+            
+        },
+    ]);
+    const sortedArchives = [...archivesInfo].sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return sortBy === 'oldest' ? dateA - dateB : dateB - dateA;
+    });
+    return (
+        <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 items-center">
+        {sortedArchives.map((archive, index) => (
+            <div>
+                <div className="flex justify-center">
+                    <img src={archive.picture} className="border-2 h-80 w-80 m-10 mb-5" alt={archive.alt} />
+                </div>
+                <div className="flex justify-center text-white text-2xl">
+                    <Link href="#" className="flex flew-row">
+                        <p>{archive.title}</p>
+                        <img src="link_arrow.png" className="pl-3 h-10"></img>
+                    </Link>
+                </div>
+            </div>   
+        ))}
+        </ul>
+    );
+ }
