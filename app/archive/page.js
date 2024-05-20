@@ -97,10 +97,10 @@ function ArchiveBlock({sortBy}) {
         <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 items-center">
         {sortedArchives.map((archive, index) => (
             <div>
-                <div className="flex items-center">
+                <div className="flex justify-center">
                     <img src={archive.picture} className="border-2 h-80 w-80 m-10 mb-5" alt={archive.alt} />
                 </div>
-                <div className="flex justify-center ml-10 w-80 text-white text-2xl">
+                <div className="flex justify-center text-white text-2xl">
                     <Link href="#" className="flex flew-row">
                         <p>{archive.title}</p>
                         <img src="link_arrow.png" className="pl-3 h-10"></img>
