@@ -1,19 +1,34 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import localFont from "next/font/local"
 import Link from "next/link";
+import { urlForImage } from "@/sanity/lib/image";
+import { client } from "@/sanity/lib/client";
 
 const fabulous = localFont({
   src: '/static-fonts/fabulous.otf',
   display: 'swap',
 })
 
+async function getEvents() {
+  const query = `*[_type == "events"] {
+    title,
+    date,
+    image,
+    altText,
+    eventLink
+  }`
 
+  const events = await client.fetch(query)
+  return events;
+}
 
-export default function Home() {
+export default async function Home() {
+  const events = await getEvents();
+
   return (
     <div>
-
       {/* Home Gallery */}
       <div className="pt-4">
         <div className="flex flex-row justify-between overflow-x-auto">
@@ -29,35 +44,37 @@ export default function Home() {
         </div>
       </div>
 
-
-      
       {/* Events */}
       <div className="flex flex-col justify-center latest-events content-center items-center">
         <div className={fabulous.className}>
           <h1 className="text-center text-white text-3xl m-4">Upcoming Events</h1>
         </div>
 
-        <div className="flex flex-row justify-center mb-6 space-x-10 mx-12 sm:mx-24">
+        <div className="flex flex-row justify-center mb-6 space-x-10 mx-12 sm:mx-24 md:mx-24 lg:mx-24">
           <div className="items-center">
             <div className="line"></div>
-            <img src="latest_left.png" alt="Mesh event" className="border border-solid border-white"></img>
-            <p className="text-white text-center font-light text-2xl pt-2">'24 Gala</p>
-            <div className="flex flex-row items-center justify-center">
+            <div className="h-80 w-96 overflow-hidden">
+              <img src={urlForImage(events[0].image)} alt={events[0].altText} className="border border-solid border-white w-full h-full object-cover"></img>
+            </div>
+            <p className="text-white text-center font-light text-2xl pt-2">{events[0].title}</p>
+            <Link className="flex flex-row items-center justify-center" href={events[0].eventLink}>
               <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
               <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
-            </div>
+            </Link>
             
           </div>
 
           <div className="hidden sm:block items-center">
             <div className="items-center">
               <div className="line"></div>
-              <img src="latest_mid.png" alt="Mesh event" className="border border-solid border-white"></img>
-              <p className="text-white text-center font-light text-2xl pt-2">Modeling Workshop</p>
-              <div className="flex flex-row items-center justify-center">
+              <div className="h-80 w-96 overflow-hidden">
+                <img src={urlForImage(events[1].image)} alt={events[1].altText} className="border border-solid border-white w-full h-full object-cover"></img>
+              </div>
+              <p className="text-white text-center font-light text-2xl pt-2">{events[1].title}</p>
+              <Link className="flex flex-row items-center justify-center" href={events[1].eventLink}>
                 <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
                 <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -65,12 +82,14 @@ export default function Home() {
           <div className="hidden lg:block items-center">
             <div className="items-center">
               <div className="line"></div>
-              <img src="latest_right.png" alt="Mesh event" className="border border-solid border-white"></img>
-              <p className="text-white text-center font-light text-2xl pt-2">The Scene</p>
-              <div className="flex flex-row items-center justify-center">
+              <div className="h-80 w-96 overflow-hidden">
+                <img src={urlForImage(events[2].image)} alt={events[2].altText} className="border border-solid border-white w-full h-full object-cover"></img>
+              </div>
+              <p className="text-white text-center font-light text-2xl pt-2">{events[2].title}</p>
+              <Link className="flex flex-row items-center justify-center" href={events[2].eventLink}>
                 <p className="text-white text-center font-light pt-1 text-base">Learn more</p>
                 <img src="link_arrow.png" className="h-8 pt-2 pl-1"></img>
-              </div>
+              </Link>
             </div>
           </div>
           
@@ -82,21 +101,21 @@ export default function Home() {
       </div>
 
 
+
       {/* Instagram Feed */}
       <div className="mb-4 mx-12 sm:mx-24">
         <div className={fabulous.className}>
           <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-white justify-center items-center justify-items-center">
-
-          <InstagramFeed />
-
+          {/* <InstagramFeed /> */}
         </div>
         <div className="flex justify-center">
-            <button className="border font-light rounded px-4 py-2 m-6 text-white"><a href="https://www.instagram.com/mesh.uw/?hl=en">View Full Feed</a></button>
-          </div>
+          <button className="border font-light rounded px-4 py-2 m-6 text-white">
+            <a href="https://www.instagram.com/mesh.uw/?hl=en">View Full Feed</a>
+          </button>
+        </div>
       </div>
-
     </div>
   );
 }
