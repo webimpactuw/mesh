@@ -49,56 +49,6 @@ body {
   background-color: #121212;
 }
 
-.latest-events {
-  background-color: #282828;
-  border-top: solid 0.5px #43B697 ;
-  border-bottom: solid 0.5px #43B697 ;
-}
-
-/* .archive-pictures {
-  width: 346px;
-  height: 346px;
-  padding: 10px; 
-}*/
-
-.line {
-  height: 0.25rem;
-  background: #E58394;
-  margin-bottom: 0.75rem;
-}
-
-.banner {
-  background: #E58394;
-}
-
-.aspect-square {
-  position: relative;
-  width: 100%;
-  padding-top: 100%;
-  overflow: hidden;
-}
-
-.aspect-square-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.button-color {
-  background-color: #43B697;
-}
-
-.input-border {
-  border-color: #43B697;
-}
-
-.page-reference-color {
-  color: #43B697;
-}
-
 /* Headshot styling for About Us */
 .headshot {
   float: left;
@@ -168,6 +118,34 @@ body {
 .item {
   background: #E58394;
   margin-bottom: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding: 10px 20px;
   border-radius: 10px;
+}
+
+.latest-events {
+  background-color: #282828;
+  border-top: solid 0.5px #43B697 ;
+  border-bottom: solid 0.5px #43B697 ;
+}
+
+/* .archive-pictures {
+  width: 346px;
+  height: 346px;
+  padding: 10px; 
+}*/
+
+.line {
+  height: 0.25rem;
+  background: #E58394;
+  margin-bottom: 0.75rem;
+}
+
+.banner {
+  background: #E58394;
+}
+
+.button-color {
+  background-color: #43B697;
 }
