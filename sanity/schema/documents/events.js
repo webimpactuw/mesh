@@ -33,6 +33,24 @@ export default {
             title: 'Event Link',
             type: 'string',
             validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'time',
+            title: 'Time',
+            type: 'string',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'location',
+            title: 'Location',
+            type: 'string',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+            validation: (Rule) => Rule.required()
         }
     ],
 }

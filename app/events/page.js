@@ -36,7 +36,7 @@ export default function events() {
        
       <div class="m-auto text-center">
         <div className={fabulous.className}>
-        <h1  class="text-4xl pb-6 text-[#FFFFFF]">MESH EVENTS</h1>
+        <h1  class="text-4xl pb-6 text-[#FFFFFF]">Events</h1>
         </div>
 
         <figure class="w-2/3 overflow-hidden m-auto b-[#FFFFFF] border-2">
