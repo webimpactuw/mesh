@@ -26,6 +26,7 @@ async function getEvents() {
 
 export default async function Home() {
   const events = await getEvents();
+  console.log(events)
 
   return (
 
@@ -51,7 +52,7 @@ export default async function Home() {
           <h1 className="text-center text-white text-3xl m-4">Upcoming Events</h1>
         </div>
 
-        <div className="flex flex-row justify-center mb-6 space-x-10 mx-12 sm:mx-24 md:mx-24 lg:mx-24">
+        <div className="flex flex-row justify-center mb-6 space-x-8 mx-24">
           <div className="items-center">
             <div className="line"></div>
             <div className="h-80 w-96 overflow-hidden">
@@ -80,7 +81,7 @@ export default async function Home() {
           </div>
 
 
-          <div className="hidden lg:block items-center">
+          <div className="hidden xl:block items-center">
             <div className="items-center">
               <div className="line"></div>
               <div className="h-80 w-96 overflow-hidden">
