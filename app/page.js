@@ -90,7 +90,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-white justify-center items-center justify-items-center">
 
-          {/* <InstagramFeed /> */}
+          <InstagramFeed />
 
         </div>
         <div className="flex justify-center">
@@ -103,58 +103,58 @@ export default function Home() {
 }
 
 // Instagram Feed
-// async function InstagramFeed() {
+async function InstagramFeed() {
 
-//   let instagramFeed = null;
-//   let error = null;
+  let instagramFeed = null;
+  let error = null;
 
-//   try {
-//     const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=${process.env.IG_TOKEN}`;
-//     const data = await fetch(url);
-//     console.log("data", data);
-//     if (!data.ok) { 
-//       throw new Error("Failed to fetch Instagram feed");
-//     }
-//     instagramFeed = await data.json();
-//     console.log("Instagram feed:", instagramFeed);
-//   } catch (err) {
-//     console.error("Error fetching Instagram feed:", err.message);
-//     error = err.message;
-//   }
+  try {
+    const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=${process.env.IG_TOKEN}`;
+    const data = await fetch(url);
+    console.log("data", data);
+    if (!data.ok) { 
+      throw new Error("Failed to fetch Instagram feed");
+    }
+    instagramFeed = await data.json();
+    console.log("Instagram feed:", instagramFeed);
+  } catch (err) {
+    console.error("Error fetching Instagram feed:", err.message);
+    error = err.message;
+  }
 
-//   const feed = (instagramFeed.data.map(post => (
-//     <div key={post.id} className="flex justify-center items-center w-full h-auto overflow-hidden">
-//       <div className="aspect-square overflow-hidden border border-solid border-white">
-//         <Link
-//           href={post.permalink}
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="aspect-content border"
-//         >
-//           {post.media_type === "VIDEO" ? (
-//             <video
-//               src={post.media_url}
-//               controls={false}
-//               className="object-cover "
-//             />
-//           ) : (
-//             <Image
-//               src={post.media_url}
-//               alt={post.caption}
-//               className="object-cover"
-//               layout="fill"
-//             />
-//           )}
-//         </Link>
-//       </div>
+  const feed = (instagramFeed.data.map(post => (
+    <div key={post.id} className="flex justify-center items-center w-full h-auto overflow-hidden">
+      <div className="aspect-square overflow-hidden border border-solid border-white">
+        <Link
+          href={post.permalink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="aspect-content border"
+        >
+          {post.media_type === "VIDEO" ? (
+            <video
+              src={post.media_url}
+              controls={false}
+              className="object-cover "
+            />
+          ) : (
+            <Image
+              src={post.media_url}
+              alt={post.caption}
+              className="object-cover"
+              layout="fill"
+            />
+          )}
+        </Link>
+      </div>
       
-//     </div>
-//   ))).slice(0, 6)
+    </div>
+  ))).slice(0, 6)
 
-//   return (
-//     <>
-//       {feed}
-//     </>
+  return (
+    <>
+      {feed}
+    </>
     
-//   );
-// }
+  );
+}
