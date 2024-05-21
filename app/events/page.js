@@ -1,4 +1,4 @@
-"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import Image from 'next/image';
@@ -6,6 +6,7 @@ import LearnButton from './components/LearnButton';
 import Events from './components/Events';
 import Navbar from '../components/Navbar';
 import { Jost } from "next/font/google";
+import { client } from '@/sanity/lib/client';
 
 
 
@@ -25,6 +26,10 @@ const jost = Jost({
 
 
 import EventsMap from './components/EventMap';
+import Bio from './components/Bio';
+import BasicModal from './components/BasicModal';
+
+
 
 export default function events() {
   return (
@@ -41,25 +46,18 @@ export default function events() {
           
           <Image src="/audience.png" width={1000} height={500} alt="audience" />
         </figure>
-
-
-
-        <div className={jost.className}>
-        <p class="text-[#FFFFFF] w-3/5 py-4 m-auto text-xl font-light">A yearly event where students, designers, and fashion enthusiasts come  together to explore style, creativity, and the limitless horizons of the fashion world</p>
-        <LearnButton />
-        </div>
-
+        <Bio />
       </div>
 
       <div class="flex flex-col ml-28">
-        
-
-
       <EventsMap />
+      
         
         
       </div>
 
     </div>
   );}
+
+
 

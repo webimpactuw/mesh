@@ -58,7 +58,7 @@ const EventsMap = () => {
         </div>
         <div class="h-20"></div>
             
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4 sm:grid-cols-1">
             {sortedEvents.map((event, index) => (
                 <div key={index} className="flex flex-row gap-x-16 pt-4">
                     <Events imageUrl={event.imageUrl} title={event.title} date={event.date} />
