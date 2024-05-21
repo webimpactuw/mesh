@@ -36,3 +36,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 app/page.js
+app/testEvents/page.js
+app/testEvents/layout.js
+app/testEvents/components/EventsTest.js
