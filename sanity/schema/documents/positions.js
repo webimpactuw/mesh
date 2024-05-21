@@ -1,19 +1,12 @@
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    name: 'events',
-    title: 'Events',
+    name: 'positions',
+    title: 'Positions',
     type: 'document',
     fields: [
         {
-            name: 'title',
-            title: 'Title',
+            name: 'positionName',
+            title: 'Position Name',
             type: 'string',
-            validation: (Rule) => Rule.required()
-        },
-        {
-            name: 'date',
-            title: 'Date',
-            type: 'datetime',
             validation: (Rule) => Rule.required()
         },
         {
@@ -23,14 +16,20 @@ export default {
             validation: (Rule) => Rule.required()
         },
         {
-            name: 'altText',
-            title: 'Alternative picture Text',
+            name: 'alt',
+            title: 'Alt',
             type: 'string',
             validation: (Rule) => Rule.required()
         },
         {
-            name: 'eventLink',
-            title: 'Event Link',
+            name: 'positionDescriptionLink',
+            title: 'Position Description Link',
+            type: 'string',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'applicationLink',
+            title: 'Application Link',
             type: 'string',
             validation: (Rule) => Rule.required()
         }

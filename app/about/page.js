@@ -14,6 +14,7 @@ const fabulous = localFont({
 })
 
 export default function about() {
+
   const settings = {
     dots: true,
     infinite: true,
@@ -35,9 +36,10 @@ export default function about() {
 
   return (
     <div>
+      <div className="h-8"></div>
     {/* ABOUT US */}
       <div className={fabulous.className}>
-        <h1 className="text-center text-white text-3xl">About Us</h1>
+        <h1 className="text-center text-white text-2xl sm:text-3xl">About Us</h1>
       </div>
 
       {/* FLEX GRID - IMAGES AND WHO ARE WE*/}
@@ -45,75 +47,72 @@ export default function about() {
         {/* IMAGES */}
         {/* Left 1/3 image layout */}
         <div className="w-2/5 bg-black-200">
-          <div className="flex">
+          <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
 
-            {/* Left half images */}
-            <div className="w-1/2">
-              {/* Full-size image */}
-              <img className="h-auto w-full" src="/about images/About1.jpeg" alt="Image 1" />
-            </div>
+            {/* Full size image */}
+            <img className="w-3/4 h-auto sm:w-full ml-2 mt-8" src="/about images/About1.jpeg" alt="Image 1" />
 
-            {/* Right half images */}
-            <div className="w-1/2 flex flex-col">
-            <div className="bg-black-200 p-8"></div>
+            <div className="flex-col">
+            <div className="bg-black-200"></div>
               {/* First half-size image */}
-              <img className="h-auto w-3/4 mb-4 mx-5" src="/about images/About2.jpeg" alt="Image 2" />
+              <div className="bg-black-200 mb-4 sm:h-20"></div>
+              <img className="h-auto w-3/4 ml-2 mb-4 sm:mx-5" src="/about images/About2.jpeg" alt="Image 2" />
 
               {/* Second half-size image */}
-              <img className="h-auto w-full mx-5" src="/about images/About3.jpeg" alt="Image 3" />
+              <img className="w-3/4 h-auto ml-2 sm:w-full sm:mx-5" src="/about images/About3.jpeg" alt="Image 3" />
             </div>
 
           </div>
         </div>
 
         {/* WHO ARE WE - TEXT CONTENT */}
-        <div className="flex justify-end pr-8 w-2/3">
-          <div className="w-4/5">
-          <div className="bg-black-200 p-4 mt-20">
+        <div className="flex justify-center pr-5 sm:pr-8 w-2/3">
+          <div className="sm:w-4/5">
+          <div className="bg-black-200 p-4 mt-5 sm:mt-20">
           {/* Green line */}
           <div className="w-1/2 h-2 bg-[#43B697]"></div>
           <div className="h-3"></div>
 
-          <h1 className="text-left text-white text-3xl">Who Are We?</h1>
-          <div className="h-3"></div>
-          <h1 className="text-left text-white text-xl font-light">MESH is a creative collective based at the University of Washington that centers fashion design education and exploration. </h1>
-          <h1 className="text-left text-white text-xl font-light">We aim to foster a lively community of fashion enthusiasts through beginner-friendly workshops, highly participatory large events, and networking/experience opportunities.  </h1>
-          <h1 className="text-left text-white text-xl font-light">Our headline event is an annual, student-run fashion show! </h1>
+          <h1 className="text-left text-white text-xl sm:text-2xl md:text-3xl">Who Are We?</h1>
+          <div className="h-1 sm:h-3"></div>
+          <h1 className="text-left text-white font-light text-m sm:text-xl">MESH is a creative collective based at the University of Washington that centers fashion design education and exploration. </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl">We aim to foster a lively community of fashion enthusiasts through beginner-friendly workshops, highly participatory large events, and networking/experience opportunities.  </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl">Our headline event is an annual, student-run fashion show! </h1>
           </div>
           </div>
         </div>
       </div>
-      <div className="h-16"></div>
+      <div className="h-8 sm:h-16"></div>
 
       {/* BOARD MEMBERS SLIDER */}
       <div className = "latest-events">
         <div className={fabulous.className}>
-          <h1 className="text-center text-white text-3xl mt-10">Board Members</h1>
+          <h1 className="text-center text-white text-2xl sm:text-3xl mt-8 sm:mt-10">Board Members</h1>
         </div>
 
         <div className="w-3/4 m-auto">
           <div>
             <Slider {...settings}>
             {members.map((d) => (
-              <div className = "mt-8 flex">
+              <div className = "mt-2 sm:mt-8 flex">
 
                 {/* Headshot */}
-                <div className = "justify-end flex headshot">
-                  <div className="w-2 h-44 bg-[#43B697]"></div>
-                  <div className="w-2 h-44 bg-[#282828]"></div>
+                <div className = "mt-1 justify-end flex headshot">
+                  <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#43B697]"></div>
+                  <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#282828]"></div>
                   {/* Image */}
-                  <img src={d.img} alt="" className="h-44 w-44 border border-white"/>
+                  <img src={d.img} alt="" className="h-20 w-20 sm:h-44 sm:w-44 border border-white"/>
                 </div>
 
                 {/* Board Member Information */}
                 <div className = "flex member-info text-white">
-                  <div className = "mt-5 flex flex-col items-center">
-                  <h1 className="text-2xl">{d.name}</h1>
-                    <div className="w-auto h-3 bg-[#282828]"></div>
-                    <h1 className="text-xl font-light">{d.title}</h1>
-                    <h1 className="text-xl font-light">{d.class}</h1>
-                    <h1 className="text-xl font-light">{d.major}</h1>
-                    <div className="w-auto h-20 bg-[#282828]"></div>
+                  <div className = "sm:mt-5 flex flex-col items-center">
+                  <h1 className="sm:text-xl md:text-2xl">{d.name}</h1>
+                    <div className="w-auto sm:h-3 bg-[#282828]"></div>
+                    <h1 className="text-base sm:text-xl font-light">{d.title}</h1>
+                    <h1 className="text-base sm:text-xl font-light">{d.class}</h1>
+                    <h1 className="text-base sm:text-xl font-light">{d.major}</h1>
+                    <div className="w-auto h-8 sm:h-20 bg-[#282828]"></div>
                   </div>
                 </div>
               </div>
@@ -123,11 +122,11 @@ export default function about() {
         </div>
 
       </div>
-      <div className="h-16"></div>
+      <div className="h-8 sm:h-16"></div>
 
       {/* FAQS section */}
       <div className={fabulous.className}>
-        <h1 className="text-center text-white text-3xl">FAQs</h1>
+        <h1 className="text-center text-white text-2xl sm:text-3xl">FAQs</h1>
       </div>
 
       {/* SINGLE COLUMN FAQS */}
@@ -151,46 +150,6 @@ export default function about() {
         </div>
         <div className="h-10"></div>
       </div>
-      /* 
-      <div className="flex">
-        <div className = "flex left-wrapper">
-          <div className = "accordian">
-            
-              {left_questions.map((item, i) => (
-                <div className="item">
-                  <div className = "title" onClick={() => toggle(i)}>
-                    <h2>{item.question}</h2>
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
-
-                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
-                      {item.answer}
-                  </div>
-                </div>
-              ))}
-
-          </div>
-        </div>
-
-        <div className = "flex right-wrapper">
-          <div className = "accordian">
-            
-              {right_questions.map((item, i) => (
-                <div className="item">
-                  <div className = "title" onClick={() => toggle(i)}>
-                    <h2>{item.question}</h2>
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
-
-                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
-                      {item.answer}
-                  </div>
-                </div>
-              ))}
-
-          </div>
-        </div>
-        */
   );
 }
 
@@ -261,30 +220,6 @@ const questions = [
   }
 ];
 
-{/* LEFT COLUMN QUESTIONS - NOT USED */}
-const left_questions = [
-  {
-    question: 'Does Mesh have office hours?',
-    answer: 'Yes. Come to MESH Office Hours every Friday 5-7PM in the MILL!',
-  },
-  {
-    question: 'How competitive is it to get into Mesh?',
-    answer: 'Answer to Question 3.',
-  },
-];
-
-{/* RIGHT COLUMN QUESTIONS - NOT USED */}
-const right_questions = [
-  {
-    question: 'When’s the quarterly meeting?',
-    answer: 'Answer to Question 2.',
-  },
-  {
-    question: 'Where can I find the application form?',
-    answer: 'Answer to Question 4.',
-  }
-];
-
 {/* CUSTOM ARROWS */}
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -307,3 +242,4 @@ function SamplePrevArrow(props) {
     />
   );
 }
+
