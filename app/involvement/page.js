@@ -1,45 +1,63 @@
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 import localFont from "next/font/local"
 const fabulous = localFont({
     src: '../static-fonts/fabulous.otf',
     display: 'swap',
 })
 
-export default function Home() {
-  const positionData = {
-    creativeAssistant: {
-      positionName: "Creative Assistant",
-      image: "creative-assistant.png",
-      alt: "Creative Assistant",
-      positionDesc: "",
-      applicationLink: ""
-    },
-    mediaIntern: {
-      positionName: "Media Intern",
-      image: "media-intern.png",
-      alt: "Media Intern",
-      positionDesc: "",
-      applicationLink: ""
-    },
-    model: {
-      positionName: "Model",
-      image: "model.png",
-      alt: "Model",
-      positionDesc: "",
-      applicationLink: ""
-    }
-  };
+async function getPositions() {
+  const query = `*[_type == "positions"] {
+    positionName,
+    image,
+    alt,
+    positionDescriptionLink,
+    applicationLink
+  }`
+
+  const positions = await client.fetch(query)
+  return positions;
+}
+
+export default async function Home() {
+  const positions = await getPositions();
+  console.log(positions)
+
+  // const positionData = {
+  //   creativeAssistant: {
+  //     positionName: "Creative Assistant",
+  //     image: "creative-assistant.png",
+  //     alt: "Creative Assistant",
+  //     positionDescriptionLink: "",
+  //     applicationLink: ""
+  //   },
+  //   mediaIntern: {
+  //     positionName: "Media Intern",
+  //     image: "media-intern.png",
+  //     alt: "Media Intern",
+  //     positionDescriptionLink: "",
+  //     applicationLink: ""
+  //   },
+  //   model: {
+  //     positionName: "Model",
+  //     image: "model.png",
+  //     alt: "Model",
+  //     positionDescriptionLink: "",
+  //     applicationLink: ""
+  //   }
+  // };
   
-  const arrOfPositions = Object.values(positionData).map((position) => (
+  const arrOfPositions = positions.map((position) => (
     <Position
       key={position.positionName}
       positionName={position.positionName}
-      image={position.image}
+      image={urlForImage(position.image)}
       alt={position.alt}
-      positionDesc={position.positionDesc}
+      positionDescriptionLink={position.positionDescriptionLink}
       applicationLink={position.applicationLink}
     />
   ));
-    
+
     return (
       <div>
         <div className="pt-4">
@@ -95,18 +113,18 @@ export default function Home() {
           </div>
       </div>
     </div>
-  );
-}
+  ); }
+
 
 function Position(props) {
-  const { positionName, image, alt, positionDesc, applicationLink } = props;
+  const { positionName, image, alt, positionDescriptionLink, applicationLink } = props;
   return (
     <div className="flex flex-col items-center">
       <p className="text-white text-center font-light text-2xl py-4">{positionName}</p>
       <img src={image} alt={alt} className="border border-solid border-white mb-4 md:mb-0"></img>
       <div className="flex flex-row items-center justify-center">
         <p className="text-white text-center font-light pt-1 text-base md:mr-4">Learn more</p>
-        <a href={positionDesc}>
+        <a href={positionDescriptionLink}>
           <img src="link_arrow.png" className="h-8 md:pt-2 md:pl-1"></img>
         </a>
         <a href={applicationLink}>

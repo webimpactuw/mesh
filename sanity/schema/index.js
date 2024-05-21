@@ -1,5 +1,4 @@
-import dog from "./documents/dog";
-
+import positions from "./documents/positions"
 export const schema = {
-  types: [dog],
+  types: [positions]
 }
