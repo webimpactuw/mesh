@@ -2,42 +2,27 @@
 import localFont from "next/font/local"
 import React, { useState } from "react";
 import Link from 'next/link'
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 const fabulous = localFont({
     src: '../static-fonts/fabulous.otf',
     display: 'swap',
 })
 
+async function getEvents() {
+    const query = `*[_type == "archive"] {
+      title,
+      date,
+      image,
+      altText,
+      programLink
+    }`
+  
+    const archive = await client.fetch(query)
+    return archive;
+  }
 
-export default function ArchivePage() {
-    const [sortBy, setSortBy] = useState('oldest');
-
-    const toggleSort = () => {
-        setSortBy(sortBy === 'oldest' ? 'newest' : 'oldest');
-    };
-    return (
-        <div className="bg-black">
-            <header className="text-center font-bold p-10 pb-5 text-4xl text-white">
-                <h1 className={fabulous.className}>ARCHIVE</h1>
-            </header>
-            <div className="text-center mb-10 text-white">
-                <p1>View photo albums and program booklets from past MESH events</p1>
-            </div>
-            <div className="flex flex-row-reverse mr-10 mb-10">
-                <button class="bg-[#43B697] rounded-lg w-40 p-1 text-xl" onClick={toggleSort}>
-                    sort by {sortBy === 'oldest' ? 'newest' : 'oldest'} &nbsp;&#8595;
-                </button>
-            </div>
-            <div>
-                <ArchiveBlock sortBy={sortBy}/>
-            </div>
-        </div>
-    );
-
-
-}
-
-
-function ArchiveBlock({sortBy}) {
+  function ArchiveBlock({sortBy}) {
     const [archivesInfo, setArchivesInfo] = useState([
         {
             title: "The scene",
@@ -111,3 +96,29 @@ function ArchiveBlock({sortBy}) {
         </ul>
     );
  }
+
+export default function ArchivePage() {
+    const [sortBy, setSortBy] = useState('oldest');
+
+    const toggleSort = () => {
+        setSortBy(sortBy === 'oldest' ? 'newest' : 'oldest');
+    };
+    return (
+        <div className="bg-black">
+            <header className="text-center font-bold p-10 pb-5 text-4xl text-white">
+                <h1 className={fabulous.className}>ARCHIVE</h1>
+            </header>
+            <div className="text-center mb-10 text-white">
+                <p1>View photo albums and program booklets from past MESH events</p1>
+            </div>
+            <div className="flex flex-row-reverse mr-10 mb-10">
+                <button class="bg-[#43B697] rounded-lg w-40 p-1 text-xl" onClick={toggleSort}>
+                    sort by {sortBy === 'oldest' ? 'newest' : 'oldest'} &nbsp;&#8595;
+                </button>
+            </div>
+            <div>
+                <ArchiveBlock sortBy={sortBy}/>
+            </div>
+        </div>
+    );
+}
