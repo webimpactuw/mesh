@@ -12,9 +12,8 @@ export default function events({imageUrl, title, date}) {
             
             <div class=" w-96 overflow-hidden  h-56 border-2 border-cyan-50">
 
-
-            <img src={imageUrl} alt="model"/>
-        </div>
+                <img src={imageUrl} alt={title}/>
+            </div>
         {/* <LearnButton /> */}
         <BasicModal title={title} date={date} location="test" time="test" description={'test'} imageUrl={imageUrl} />
         </div>
