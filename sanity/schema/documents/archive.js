@@ -12,7 +12,7 @@ export default {
         {
             name: 'date',
             title: 'Date',
-            type: 'string',
+            type: 'datetime',
             validation: (Rule) => Rule.required()
         },
         {
@@ -23,13 +23,13 @@ export default {
         },
         {
             name: 'altText',
-            title: 'Alternative picture Text',
+            title: 'Alt Text',
             type: 'string',
             validation: (Rule) => Rule.required()
         },
         {
             name: 'programLink',
-            title: 'Program Link',
+            title: 'Link to Event Program',
             type: 'string',
             validation: (Rule) => Rule.required()
         }

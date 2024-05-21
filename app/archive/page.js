@@ -1,6 +1,6 @@
 "use client"
 import localFont from "next/font/local"
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Link from 'next/link'
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
@@ -9,7 +9,7 @@ const fabulous = localFont({
     display: 'swap',
 })
 
-async function getEvents() {
+async function getArchive() {
     const query = `*[_type == "archive"] {
       title,
       date,
@@ -21,72 +21,37 @@ async function getEvents() {
     const archive = await client.fetch(query)
     return archive;
   }
+  
+function ArchiveBlock({sortBy}) {
+    const [archives, setArchives] = useState([]);
 
-  function ArchiveBlock({sortBy}) {
-    const [archivesInfo, setArchivesInfo] = useState([
-        {
-            title: "The scene",
-            date: "2024-02-24",
-            picture: "/images/Arch1.png",
-            alt: "tbd",
-            program: "links tbd",
-            
-        },
-        {
-            title: "Event Title",
-            date: "2024-02-25",
-            picture: "/images/Arch2.png",
-            alt: "tbd",
-            program: "links tbd",
-            
-        },
-        {
-            title: "Event Title",
-            date: "2024-02-26",
-            picture: "/images/Arch3.png",
-            alt: "tbd",
-            program: "links tbd",
-            
-        },
-        {
-            title: "Event Title",
-            date: "2024-02-27",
-            picture: "/images/Arch4.png",
-            alt: "tbd",
-            program: "links tbd",
-            
-        },
-        {
-            title: "Event Title",
-            date: "2024-02-28",
-            picture: "/images/Arch5.png",
-            alt: "tbd",
-            program: "links tbd",
-            
-        },
-        {
-            title: "Event Title",
-            date: "2024-02-29",
-            picture: "/images/Arch6.png",
-            alt: "tbd",
-            program: "links tbd",
-            
-        },
-    ]);
-    const sortedArchives = [...archivesInfo].sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return sortBy === 'oldest' ? dateA - dateB : dateB - dateA;
+    useEffect(() => {
+        async function fetchArchives() {
+            const fetchedArchives = await getArchive();
+            setArchives(fetchedArchives);
+        }
+
+        fetchArchives();
+    }, []);
+
+    const sortedArchives = [...archives].sort((a, b) => {
+        if (sortBy === 'asc') {
+            return new Date(a.date) - new Date(b.date);
+        } else if (sortBy === 'desc') {
+            return new Date(b.date) - new Date(a.date);
+        } else {
+            return 0;
+        }
     });
     return (
         <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 items-center">
-        {sortedArchives.map((archive, index) => (
-            <div>
-                <div className="flex justify-center">
-                    <img src={archive.picture} className="border-2 h-80 w-80 m-10 mb-5" alt={archive.alt} />
+        {archives.map((archive) => (
+            <div className="flex flex-col items-center">
+                <div className="flex items-center h-80 w-80 ">
+                    <img src= {urlForImage(archive.image)} className="border-2 h-full w-full object-cover" alt={archive.alt} />
                 </div>
-                <div className="flex justify-center text-white text-2xl">
-                    <Link href="#" className="flex flew-row">
+                <div className="flex justify-center text-white text-2xl mt-5">
+                    <Link href={archive.programLink} className="flex flew-row">
                         <p>{archive.title}</p>
                         <img src="link_arrow.png" className="pl-3 h-10"></img>
                     </Link>
@@ -98,10 +63,10 @@ async function getEvents() {
  }
 
 export default function ArchivePage() {
-    const [sortBy, setSortBy] = useState('oldest');
+    const [sortBy, setSortBy] = useState('asc');
 
-    const toggleSort = () => {
-        setSortBy(sortBy === 'oldest' ? 'newest' : 'oldest');
+    const handleSortToggle = () => {
+        setSortBy((prevSortBy) => (prevSortBy === 'asc' ? 'desc' : 'asc'));
     };
     return (
         <div className="bg-black">
@@ -112,8 +77,8 @@ export default function ArchivePage() {
                 <p1>View photo albums and program booklets from past MESH events</p1>
             </div>
             <div className="flex flex-row-reverse mr-10 mb-10">
-                <button class="bg-[#43B697] rounded-lg w-40 p-1 text-xl" onClick={toggleSort}>
-                    sort by {sortBy === 'oldest' ? 'newest' : 'oldest'} &nbsp;&#8595;
+                <button onClick={handleSortToggle} class="bg-[#43B697] rounded-lg w-40 p-1 text-xl">
+                    sort by {sortBy === 'asc' ? '↑' : '↓'}
                 </button>
             </div>
             <div>
