@@ -7,6 +7,7 @@ import Events from './components/Events';
 import Navbar from '../components/Navbar';
 import { Jost } from "next/font/google";
 import { client } from '@/sanity/lib/client';
+import Bio from './components/Bio';
 
 
 
@@ -25,22 +26,18 @@ const jost = Jost({
 })
 
 
-import EventsMap from './components/EventMap';
-import Bio from './components/Bio';
-import BasicModal from './components/BasicModal';
 
+import EventsMap from './components/EventMap';
 
 
 export default function events() {
   return (
     <div class="w-full h-full bg-[#121212]">
-       {/* <Navbar/> */}
+       
       <div class="m-auto text-center">
-
         <div className={fabulous.className}>
-        <h1 class="text-4xl pb-6 text-[#FFFFFF]">EVENTS</h1>
+        <h1  class="text-4xl pb-6 text-[#FFFFFF]">MESH EVENTS</h1>
         </div>
-
 
         <figure class="w-2/3 overflow-hidden m-auto b-[#FFFFFF] border-2">
           
