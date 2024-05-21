@@ -15,9 +15,6 @@ export default function LearnButton({link}) {
         <button onClick={learn} class="text-[#FFFFFF] font-sans text-lg font-light">Learn More </button>
         <img src="/arrowup.png" alt="arrow" class="h-10"/>
         </a>
-
-        {/* <Popup trigger={<button onClick={learn} class="text-[#FFFFFF] font-sans text-lg font-light">Learn More </button>
-        }/> */}
         
     </div>
     );

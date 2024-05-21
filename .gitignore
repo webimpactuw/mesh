@@ -35,4 +35,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-app/page.js
+
+# testing
+app/testEvents/page.js
+app/testEvents/layout.js
+app/testEvents/components/EventsTest.js

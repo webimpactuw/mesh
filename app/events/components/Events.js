@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import BasicModal from "./BasicModal";
-import LearnButton from "./LearnButton";
 
 export default function events({imageUrl, title, date}) {
     return (
@@ -12,11 +12,10 @@ export default function events({imageUrl, title, date}) {
             
             <div class=" w-96 overflow-hidden  h-56 border-2 border-cyan-50">
 
-
-            <img src={imageUrl} alt="model"/>
-        </div>
+                <img src={imageUrl} alt={title}/>
+            </div>
         {/* <LearnButton /> */}
-        <BasicModal title={title} date={date} location="test" time="test" description={'test'} imageUrl={imageUrl} />
+        <BasicModal title={title} date={date} location="Location" time="5:00pm" description={'Description'} imageUrl={imageUrl} />
         </div>
     );
 }
