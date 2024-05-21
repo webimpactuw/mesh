@@ -6,11 +6,16 @@ const nextConfig = {
 		remotePatterns: [
 			{
 			  protocol: "https",
-			  hostname: "scontent.cdninstagram.com",
-			  port: "",
+			  hostname: "scontent-sea1-1.cdninstagram.com",
+			  pathname: "**",
+			},
+			{
+			  protocol: "https",
+			  hostname: "cdn.sanity.io",
+			  pathname: "**",
 			},
 		  ],
-		domains: ['cdn.sanity.io', 'scontent-sea1-1.cdninstagram.com'],
+		// domains: ['cdn.sanity.io', 'scontent-sea1-1.cdninstagram.com'],
 	}
 }
 
