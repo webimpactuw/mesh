@@ -16,11 +16,7 @@ const fabulous = localFont({
   display: 'swap',
 })
 
-const jost = Jost({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['300', '400', '600'], 
-})
+
 
 import EventsMap from './components/EventMap';
 
@@ -38,7 +34,7 @@ export default function events() {
           
           <Image src="/audience.png" width={1000} height={500} alt="audience" />
         </figure>
-        <Bio />
+        <Bio imageUrl="/audience.png" />
       </div>
 
       <div class="flex flex-col ml-28">
