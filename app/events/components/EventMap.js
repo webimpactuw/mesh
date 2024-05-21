@@ -15,9 +15,6 @@ const eventsData = [
     
 ];
 
-
-
-
 const EventsMap = () => {
     
     const [sortedEvents, setSortedEvents] = useState([...eventsData]);

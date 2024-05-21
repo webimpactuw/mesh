@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import LearnButton from './LearnButton';
+import { Jost } from 'next/font/google';
 
 
 // couldnt figure out the file pathToString, copied this into the events folder
@@ -15,6 +16,12 @@ import localFont from "next/font/local"
 const fabulous = localFont({
   src: '/static-fonts/fabulous.otf',
   display: 'swap',
+})
+
+const jost = Jost({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '600'], 
 })
 
 const style = {
@@ -60,25 +67,27 @@ export default function BasicModal({title, date, time, location, description, im
             {title}
           </Typography>
           </div>
-          <div class="w-90 overflow-hidden h-56 text-white">
+          <div class="w-90 overflow-hidden h-56 text-white pb-2">
           <img src={imageUrl} alt={title}/>
           </div>
+          
+          <div className={jost.className}>
+            <div id="time" class="text-white flex flex-row gap-x-4 py-4 text-lg font-light ">
+              <img src="/clock_.png" alt='clock' />
+              <p>{date}, {time}</p>
 
-          <div id="time" class="text-white flex flex-row gap-x-4 py-4">
-            <img src="/clock_.png" alt='clock' />
-            <p>{date}, {time}</p>
+            </div>
+            <div id="location" class="text-white flex flex-row gap-x-4 py-4 text-xl font-light">
+              <img src="/location.png" alt='clock' class="ml-1"/>
+              <p>{location}</p>
 
-          </div>
-          <div id="time" class="text-white flex flex-row gap-x-4 py-4">
-            <img src="/location.png" alt='clock' class="ml-1"/>
-            <p>{location}</p>
+            </div>
 
-          </div>
-
-          <div class="text-white">
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {description}
-          </Typography>
+            <div className={jost.className}>
+            <Typography class="pt-4 font-extralight text-white text-lg" id="modal-modal-description" sx={{ mt: 2 }}>
+              {description}
+            </Typography>
+            </div>
           </div>
           
         </Box>

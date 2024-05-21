@@ -13,8 +13,11 @@ export default {
         {
             name: 'date',
             title: 'Date',
-            type: 'string',
-            validation: (Rule) => Rule.required()
+            type: 'date',
+            validation: (Rule) => Rule.required(),
+            options: {
+                dateFormat: 'MMMM Do, YYYY',
+            }
         },
         {
             name: 'image',
@@ -37,7 +40,7 @@ export default {
         {
             name: 'time',
             title: 'Time',
-            type: 'string',
+            type: 'datetime',
             validation: (Rule) => Rule.required()
         },
         {
@@ -51,6 +54,6 @@ export default {
             title: 'Description',
             type: 'text',
             validation: (Rule) => Rule.required()
-        }
+        },
     ],
 }
