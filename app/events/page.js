@@ -37,7 +37,7 @@ export default function events() {
         <Bio imageUrl="/audience.png" />
       </div>
 
-      <div class="flex flex-col ml-28">
+      <div class="flex flex-col ml-28 pb-12">
       <EventsMap />
         
       </div>
