@@ -13,6 +13,7 @@ const fabulous = localFont({
   display: 'swap',
 })
 
+// MEMBERS SANITY FUNCTIONS
 async function getMembers() {
 
   const query = `*[_type == "members"] {
@@ -80,7 +81,20 @@ function BoardMembersBlock() {
   );
 }
 
-export default function about() {
+// QUESTIONS SANITY FUNCTIONS
+async function getQuestions() {
+
+  const query = `*[_type == "questions"] {
+    question,
+    answer
+  }`
+
+  const questions = await client.fetch(query)
+  return questions;
+}
+
+function QuestionsBlock() {
+  const [questions, setQuestions] = useState([]);
   const [selected, setSelected] = useState(null)
 
   const toggle = (i) => {
@@ -90,6 +104,44 @@ export default function about() {
 
     setSelected(i)
   }
+
+  useEffect(() => {
+      async function fetchQuestions() {
+          const fetchedQuestions = await getQuestions();
+          setQuestions(fetchedQuestions);
+      }
+
+      fetchQuestions();
+  }, []);
+
+  const allQuestions = [...questions];
+
+  return (
+    <div>
+      <div className = "wrapper">
+          <div className = "accordian">
+            
+              {allQuestions.map((item, i) => (
+                <div className="item mt-3">
+                  <div className = "title" onClick={() => toggle(i)}>
+                    <h2>{item.question}</h2>
+                    <span>{selected === i ? '-' : '+'}</span>
+                  </div>
+
+                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
+                      {item.answer}
+                  </div>
+                </div>
+              ))}
+
+          </div>
+        </div>
+        <div className="h-10"></div>
+    </div>
+  );
+}
+
+export default function about() {
 
   return (
     <div>
@@ -129,7 +181,7 @@ export default function about() {
           {/* Green line */}
           <div className="w-1/2 h-2 bg-[#43B697]"></div>
           <div className="h-3"></div>
-
+          {/* Who Are We text info */}
           <h1 className="text-left text-white text-xl sm:text-2xl md:text-3xl">Who Are We?</h1>
           <div className="h-1 sm:h-3"></div>
           <h1 className="text-left text-white font-light text-m sm:text-xl">MESH is a creative collective based at the University of Washington that centers fashion design education and exploration. </h1>
@@ -162,30 +214,12 @@ export default function about() {
       </div>
 
       {/* SINGLE COLUMN FAQS */}
-      <div className = "wrapper">
-          <div className = "accordian">
-            
-              {questions.map((item, i) => (
-                <div className="item mt-3">
-                  <div className = "title" onClick={() => toggle(i)}>
-                    <h2>{item.question}</h2>
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
-
-                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
-                      {item.answer}
-                  </div>
-                </div>
-              ))}
-
-          </div>
-        </div>
-        <div className="h-10"></div>
+      <QuestionsBlock />
       </div>
   );
 }
 
-{/* BOARD MEMBERS AND HEADSHOTS */}
+{/* NOT USED - BOARD MEMBERS AND HEADSHOTS */}
 const membersmap = [
   {
       name: 'Amy (she/they)',
@@ -224,7 +258,30 @@ const membersmap = [
 },
 ];
 
-{/* FAQS AND ANSWERS */}
+{/* CUSTOM ARROWS */}
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "gray-200" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "gray-200" }}
+      onClick={onClick}
+    />
+  );
+}
+
+{/* NOT USED - FAQS AND ANSWERS */}
 const questions = [
   {
     question: 'What does MESH do?',
@@ -251,28 +308,5 @@ const questions = [
     answer: 'Most of our teams focus on big events, but also lend a hand with day-to-day operations. All of our teams require an application; most are open to all skill levels (seriously, please apply no matter your background!) but some like the media team do require previous experience. All of our team members are volunteers.'
   }
 ];
-
-{/* CUSTOM ARROWS */}
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "gray-200" }}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "gray-200" }}
-      onClick={onClick}
-    />
-  );
-}
 
 
