@@ -109,7 +109,7 @@ export default async function Home() {
           <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-white justify-center items-center justify-items-center">
-          {/* <InstagramFeed /> */}
+          <InstagramFeed /> 
         </div>
         <div className="flex justify-center">
           <button className="border font-light rounded px-4 py-2 m-6 text-white">
@@ -141,38 +141,38 @@ async function InstagramFeed() {
     error = err.message;
   }
 
-  const feed = (instagramFeed.data.map(post => (
-    <div key={post.id} className="flex justify-center items-center w-full h-auto overflow-hidden">
-      <div className="aspect-square overflow-hidden border border-solid border-white">
-        <Link
-          href={post.permalink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="aspect-content border"
-        >
-          {post.media_type === "VIDEO" ? (
-            <video
-              src={post.media_url}
-              controls={false}
-              className="object-cover "
-            />
-          ) : (
-            <Image
-              src={post.media_url}
-              alt={post.caption}
-              className="object-cover"
-              layout="fill"
-            />
-          )}
-        </Link>
-      </div>
+  // const feed = (instagramFeed.data.map(post => (
+  //   <div key={post.id} className="flex justify-center items-center w-full h-auto overflow-hidden">
+  //     <div className="aspect-square overflow-hidden border border-solid border-white">
+  //       <Link
+  //         href={post.permalink}
+  //         target="_blank"
+  //         rel="noopener noreferrer"
+  //         className="aspect-content border"
+  //       >
+  //         {post.media_type === "VIDEO" ? (
+  //           <video
+  //             src={post.media_url}
+  //             controls={false}
+  //             className="object-cover "
+  //           />
+  //         ) : (
+  //           <Image
+  //             src={post.media_url}
+  //             alt={post.caption}
+  //             className="object-cover"
+  //             layout="fill"
+  //           />
+  //         )}
+  //       </Link>
+  //     </div>
       
-    </div>
-  ))).slice(0, 6)
+  //   </div>
+  // ))).slice(0, 6)
 
   return (
     <>
-      {feed}
+      {/* {feed} */}
     </>
     
   );
