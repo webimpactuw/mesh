@@ -118,6 +118,10 @@ export default async function Home() {
           </button>
         </div>
       </div> */}
+<<<<<<< HEAD
+=======
+
+>>>>>>> b4c6243ae2fc42ef9fbfb9f8544314dffea16d0b
       <div className="mb-4 mx-24">
         <div className={fabulous.className}>
           <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
