@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "../globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
@@ -27,7 +27,7 @@ async function getMembers() {
   return members;
 }
 
-function boardMembersBlock() {
+function BoardMembersBlock() {
   const [members, setMembers] = useState([]);
 
   const settings = {
@@ -77,10 +77,10 @@ function boardMembersBlock() {
         </div>
       ))}
     </Slider>
-  )
+  );
 }
 
-export default async function about() {
+export default function about() {
   const [selected, setSelected] = useState(null)
 
   const toggle = (i) => {
@@ -149,7 +149,7 @@ export default async function about() {
 
         <div className="w-3/4 m-auto">
           <div>
-            <boardMembersBlock/>
+            <BoardMembersBlock />
           </div>
         </div>
 

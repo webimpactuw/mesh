@@ -178,38 +178,38 @@ async function InstagramFeed() {
     error = err.message;
   }
 
-  const feed = (instagramFeed.data.map(post => (
-    <div key={post.id} className="flex justify-center items-center w-full h-auto overflow-hidden">
-      <div className="aspect-square overflow-hidden border border-solid border-white">
-        <Link
-          href={post.permalink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="aspect-content border"
-        >
-          {post.media_type === "VIDEO" ? (
-            <video
-              src={post.media_url}
-              controls={false}
-              className="object-cover "
-            />
-          ) : (
-            <Image
-              src={post.media_url}
-              alt={post.caption}
-              className="object-cover"
-              layout="fill"
-            />
-          )}
-        </Link>
-      </div>
+  // const feed = (instagramFeed.data.map(post => (
+  //   <div key={post.id} className="flex justify-center items-center w-full h-auto overflow-hidden">
+  //     <div className="aspect-square overflow-hidden border border-solid border-white">
+  //       <Link
+  //         href={post.permalink}
+  //         target="_blank"
+  //         rel="noopener noreferrer"
+  //         className="aspect-content border"
+  //       >
+  //         {post.media_type === "VIDEO" ? (
+  //           <video
+  //             src={post.media_url}
+  //             controls={false}
+  //             className="object-cover "
+  //           />
+  //         ) : (
+  //           <Image
+  //             src={post.media_url}
+  //             alt={post.caption}
+  //             className="object-cover"
+  //             layout="fill"
+  //           />
+  //         )}
+  //       </Link>
+  //     </div>
       
-    </div>
-  ))).slice(0, 6)
+  //   </div>
+  // ))).slice(0, 6)
 
   return (
     <>
-      {feed}
+      {/* {feed} */}
     </>
     
   );
