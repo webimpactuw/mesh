@@ -17,7 +17,7 @@ async function getEvents() {
     date,
     image,
     altText,
-    eventLink
+    eventLink,
   }`
 
   const events = await client.fetch(query)
@@ -26,6 +26,7 @@ async function getEvents() {
 
 export default async function Home() {
   const events = await getEvents();
+  console.log(events)
 
   return (
 
@@ -51,7 +52,7 @@ export default async function Home() {
           <h1 className="text-center text-white text-3xl m-4">Upcoming Events</h1>
         </div>
 
-        <div className="flex flex-row justify-center mb-6 space-x-10 mx-12 sm:mx-24 md:mx-24 lg:mx-24">
+        <div className="flex flex-row justify-center mb-6 space-x-8 mx-24">
           <div className="items-center">
             <div className="line"></div>
             <div className="h-80 w-96 overflow-hidden">
@@ -80,7 +81,7 @@ export default async function Home() {
           </div>
 
 
-          <div className="hidden lg:block items-center">
+          <div className="hidden xl:block items-center">
             <div className="items-center">
               <div className="line"></div>
               <div className="h-80 w-96 overflow-hidden">
@@ -104,19 +105,55 @@ export default async function Home() {
 
 
       {/* Instagram Feed */}
-      <div className="mb-4 mx-12 sm:mx-24">
+      {/* <div className="mb-4 mx-12 sm:mx-24">
         <div className={fabulous.className}>
           <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-white justify-center items-center justify-items-center">
-          <InstagramFeed /> 
+          <InstagramFeed />
         </div>
         <div className="flex justify-center">
           <button className="border font-light rounded px-4 py-2 m-6 text-white">
             <a href="https://www.instagram.com/mesh.uw/?hl=en">View Full Feed</a>
           </button>
         </div>
+      </div> */}
+
+      <div className="mb-4 mx-24">
+        <div className={fabulous.className}>
+          <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-white">
+
+          <div className="flex justify-center items-center m-2">
+            <img className="h-auto max-w-full border" src="insta/insta1.jpg"></img>
+          </div>
+
+          <div className="flex justify-center items-center m-2">
+            <img className="h-auto max-w-full border" src="insta/insta2.jpg"></img>
+          </div>
+
+          <div className="flex justify-center items-center m-2">
+            <img className="h-auto max-w-full border" src="insta/insta3.jpg"></img>
+          </div>
+
+          <div className="flex justify-center items-center m-2">
+            <img className="h-auto max-w-full border" src="insta/insta4.jpg"></img>
+          </div>
+
+          <div className="flex justify-center items-center m-2">
+            <img className="h-auto max-w-full border" src="insta/insta5.jpg"></img>
+          </div>
+
+          <div className="flex justify-center items-center m-2">
+            <img className="h-auto max-w-full border" src="insta/insta6.jpg"></img>
+          </div>
+        </div>
+        <div className="flex justify-center">
+            <button className="border font-light rounded px-4 py-2 m-6 text-white"><a href="https://www.instagram.com/mesh.uw/?hl=en">View Full Feed</a></button>
+          </div>
       </div>
+
     </div>
   );
 }

@@ -13,8 +13,11 @@ export default {
         {
             name: 'date',
             title: 'Date',
-            type: 'datetime',
-            validation: (Rule) => Rule.required()
+            type: 'date',
+            validation: (Rule) => Rule.required(),
+            options: {
+                dateFormat: 'MMMM Do, YYYY',
+            }
         },
         {
             name: 'image',
@@ -33,6 +36,24 @@ export default {
             title: 'Event Link',
             type: 'string',
             validation: (Rule) => Rule.required()
-        }
+        },
+        {
+            name: 'time',
+            title: 'Time',
+            type: 'datetime',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'location',
+            title: 'Location',
+            type: 'string',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+            validation: (Rule) => Rule.required()
+        },
     ],
 }

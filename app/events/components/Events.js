@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import LearnButton from "./LearnButton";
+"use client";
+import { urlForImage } from "@/sanity/lib/image";
+import BasicModal from "./BasicModal";
 
 export default function events({imageUrl, title, date}) {
     return (
@@ -11,10 +13,10 @@ export default function events({imageUrl, title, date}) {
             
             <div class=" w-96 overflow-hidden  h-56 border-2 border-cyan-50">
 
-
-            <img src={imageUrl} alt="model"/>
-        </div>
-        <LearnButton />
+                <img src={urlForImage(imageUrl)} alt={title}/>
+            </div>
+        {/* <LearnButton /> */}
+        <BasicModal title={title} date={date} location="Location" time="5:00pm" description={'Description'} imageUrl={imageUrl} />
         </div>
     );
 }
