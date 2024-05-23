@@ -14,6 +14,7 @@ const fabulous = localFont({
 })
 
 export default function about() {
+
   const settings = {
     dots: true,
     infinite: true,
@@ -46,30 +47,27 @@ export default function about() {
         {/* IMAGES */}
         {/* Left 1/3 image layout */}
         <div className="w-2/5 bg-black-200">
-          <div className="flex-col">
+          <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
 
-            {/* Left half images */}
-            <div className="w-1/2">
-              {/* Full-size image */}
-              <img className="h-auto w-full" src="/about images/About1.jpeg" alt="Image 1" />
-            </div>
+            {/* Full size image */}
+            <img className="w-3/4 h-auto sm:w-full ml-2 mt-8" src="/about images/About1.jpeg" alt="Image 1" />
 
-            {/* Right half images */}
-            <div className="w-1/2 flex flex-col">
-            <div className="bg-black-200 p-8"></div>
+            <div className="flex-col">
+            <div className="bg-black-200"></div>
               {/* First half-size image */}
-              <img className="h-auto w-3/4 mb-4 mx-5" src="/about images/About2.jpeg" alt="Image 2" />
+              <div className="bg-black-200 mb-4 sm:h-20"></div>
+              <img className="h-auto w-3/4 ml-2 mb-4 sm:mx-5" src="/about images/About2.jpeg" alt="Image 2" />
 
               {/* Second half-size image */}
-              <img className="h-auto w-full mx-5" src="/about images/About3.jpeg" alt="Image 3" />
+              <img className="w-3/4 h-auto ml-2 sm:w-full sm:mx-5" src="/about images/About3.jpeg" alt="Image 3" />
             </div>
 
           </div>
         </div>
 
         {/* WHO ARE WE - TEXT CONTENT */}
-        <div className="flex justify-end sm:pr-8 w-2/3">
-          <div className="w-5/6 sm:w-4/5">
+        <div className="flex justify-center pr-5 sm:pr-8 w-2/3">
+          <div className="sm:w-4/5">
           <div className="bg-black-200 p-4 mt-5 sm:mt-20">
           {/* Green line */}
           <div className="w-1/2 h-2 bg-[#43B697]"></div>
@@ -84,7 +82,7 @@ export default function about() {
           </div>
         </div>
       </div>
-      <div className="h-8 sm: h-16"></div>
+      <div className="h-8 sm:h-16"></div>
 
       {/* BOARD MEMBERS SLIDER */}
       <div className = "latest-events">
@@ -124,7 +122,7 @@ export default function about() {
         </div>
 
       </div>
-      <div className="h-8 sm: h-16"></div>
+      <div className="h-8 sm:h-16"></div>
 
       {/* FAQS section */}
       <div className={fabulous.className}>
@@ -152,46 +150,6 @@ export default function about() {
         </div>
         <div className="h-10"></div>
       </div>
-      /* 
-      <div className="flex">
-        <div className = "flex left-wrapper">
-          <div className = "accordian">
-            
-              {left_questions.map((item, i) => (
-                <div className="item">
-                  <div className = "title" onClick={() => toggle(i)}>
-                    <h2>{item.question}</h2>
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
-
-                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
-                      {item.answer}
-                  </div>
-                </div>
-              ))}
-
-          </div>
-        </div>
-
-        <div className = "flex right-wrapper">
-          <div className = "accordian">
-            
-              {right_questions.map((item, i) => (
-                <div className="item">
-                  <div className = "title" onClick={() => toggle(i)}>
-                    <h2>{item.question}</h2>
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
-
-                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
-                      {item.answer}
-                  </div>
-                </div>
-              ))}
-
-          </div>
-        </div>
-        */
   );
 }
 
@@ -262,30 +220,6 @@ const questions = [
   }
 ];
 
-{/* LEFT COLUMN QUESTIONS - NOT USED */}
-const left_questions = [
-  {
-    question: 'Does Mesh have office hours?',
-    answer: 'Yes. Come to MESH Office Hours every Friday 5-7PM in the MILL!',
-  },
-  {
-    question: 'How competitive is it to get into Mesh?',
-    answer: 'Answer to Question 3.',
-  },
-];
-
-{/* RIGHT COLUMN QUESTIONS - NOT USED */}
-const right_questions = [
-  {
-    question: 'When’s the quarterly meeting?',
-    answer: 'Answer to Question 2.',
-  },
-  {
-    question: 'Where can I find the application form?',
-    answer: 'Answer to Question 4.',
-  }
-];
-
 {/* CUSTOM ARROWS */}
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -308,3 +242,4 @@ function SamplePrevArrow(props) {
     />
   );
 }
+

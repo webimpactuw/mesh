@@ -15,7 +15,7 @@ async function getPositions() {
     applicationLink
   }`
 
-  const positions = await client.fetch(query)
+  const positions = await client.fetch(query, { cache: 'no-cache' });
   return positions;
 }
 
@@ -81,9 +81,11 @@ export default async function Home() {
 
           </div>
           <div className="flex flex-col items-center justify-center pt-10 md:pt-0">
-            <button className="sm:text-2xl lg:text-4xl button-color hover:bg-white text-black py-0.25 md:py-2 px-16 rounded-full focus:outline-none focus:shadow-outline" type="button">
-              Link
-            </button>
+            <a href="https://linktr.ee/mesh.uw" target="_blank" rel="noopener noreferrer">
+              <button className="sm:text-2xl lg:text-4xl button-color hover:bg-white text-black py-0.25 md:py-2 px-16 rounded-full focus:outline-none focus:shadow-outline" type="button">
+                Link
+              </button>
+            </a>
           </div>
       </div>
     </div>
@@ -98,10 +100,10 @@ function Position(props) {
       <img src={image} alt={alt} className="border border-solid border-white mb-4 md:mb-0"></img>
       <div className="flex flex-row items-center justify-center">
         <p className="text-white text-center font-light pt-1 text-base md:mr-4">Learn more</p>
-        <a href={positionDescriptionLink}>
+        <a href={positionDescriptionLink} target="_blank" rel="noopener noreferrer">
           <img src="link_arrow.png" className="h-8 md:pt-2 md:pl-1"></img>
         </a>
-        <a href={applicationLink}>
+        <a href={applicationLink} target="_blank" rel="noopener noreferrer">
           <button className="button-color hover:bg-white ml-4 text-black px-16 md:px-12 py-0.25 rounded-full focus:outline-none focus:shadow-outline md:mt-2 md:ml-4" type="button">
             apply
           </button>
