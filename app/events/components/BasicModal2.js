@@ -69,7 +69,7 @@ export default function BasicModal({title, date, time, location, description, im
           </Typography>
           </div>
           <div class="w-90 overflow-hidden h-56 text-white pb-2">
-          <img src={urlForImage(imageUrl)} alt={title}/>
+          <img src={imageUrl} alt={title}/>
           </div>
           
           <div className={jost.className}>
