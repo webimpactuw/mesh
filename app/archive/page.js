@@ -45,8 +45,8 @@ function ArchiveBlock({sortBy}) {
     });
     return (
         <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 items-center">
-        {archives.map((archive) => (
-            <div className="flex flex-col items-center">
+        {sortedArchives.map((archive) => (
+            <div key={archive._id} className="flex flex-col items-center">
                 <div className="flex items-center h-80 w-80 ">
                     <img src= {urlForImage(archive.image)} className="border-2 h-full w-full object-cover" alt={archive.alt} />
                 </div>
@@ -74,7 +74,7 @@ export default function ArchivePage() {
                 <h1 className={fabulous.className}>ARCHIVE</h1>
             </header>
             <div className="text-center mb-10 text-white">
-                <p1>View photo albums and program booklets from past MESH events</p1>
+                <p>View photo albums and program booklets from past MESH events</p>
             </div>
             <div className="flex flex-row-reverse mr-10 mb-10">
                 <button onClick={handleSortToggle} class="bg-[#43B697] rounded-lg w-40 p-1 text-xl">

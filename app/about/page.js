@@ -1,19 +1,34 @@
 'use client'
-import { dataset } from "@/sanity/env";
 import localFont from "next/font/local"
 import Slider from "react-slick";
 import "../globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 
 const fabulous = localFont({
   src: '../static-fonts/fabulous.otf',
   display: 'swap',
 })
 
-export default function about() {
+async function getMembers() {
+
+  const query = `*[_type == "members"] {
+    name,
+    title,
+    class,
+    major,
+    image,
+  }`
+
+  const members = await client.fetch(query)
+  return members;
+}
+
+function BoardMembersBlock() {
+  const [members, setMembers] = useState([]);
 
   const settings = {
     dots: true,
@@ -24,6 +39,48 @@ export default function about() {
     prevArrow: <SamplePrevArrow />
   }
 
+  useEffect(() => {
+      async function fetchMembers() {
+          const fetchedMembers = await getMembers();
+          setMembers(fetchedMembers);
+      }
+
+      fetchMembers();
+  }, []);
+
+  const allMembers = [...members];
+
+  return (
+    <Slider {...settings}>
+      {allMembers.map((d) => (
+        <div className = "mt-2 sm:mt-8 flex">
+
+          {/* Headshot */}
+          <div className = "mt-1 justify-end flex headshot">
+            <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#43B697]"></div>
+            <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#282828]"></div>
+            {/* Image */}
+            <img src={urlForImage(d.image)} alt="" className="h-20 w-20 sm:h-44 sm:w-44 border border-white"/>
+          </div>
+
+          {/* Board Member Information */}
+          <div className = "flex member-info text-white">
+            <div className = "sm:mt-5 flex flex-col items-center">
+            <h1 className="sm:text-xl md:text-2xl">{d.name}</h1>
+              <div className="w-auto sm:h-3 bg-[#282828]"></div>
+              <h1 className="text-base sm:text-xl font-light">{d.title}</h1>
+              <h1 className="text-base sm:text-xl font-light">{d.class}</h1>
+              <h1 className="text-base sm:text-xl font-light">{d.major}</h1>
+              <div className="w-auto h-8 sm:h-20 bg-[#282828]"></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </Slider>
+  );
+}
+
+export default function about() {
   const [selected, setSelected] = useState(null)
 
   const toggle = (i) => {
@@ -92,32 +149,7 @@ export default function about() {
 
         <div className="w-3/4 m-auto">
           <div>
-            <Slider {...settings}>
-            {members.map((d) => (
-              <div className = "mt-2 sm:mt-8 flex">
-
-                {/* Headshot */}
-                <div className = "mt-1 justify-end flex headshot">
-                  <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#43B697]"></div>
-                  <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#282828]"></div>
-                  {/* Image */}
-                  <img src={d.img} alt="" className="h-20 w-20 sm:h-44 sm:w-44 border border-white"/>
-                </div>
-
-                {/* Board Member Information */}
-                <div className = "flex member-info text-white">
-                  <div className = "sm:mt-5 flex flex-col items-center">
-                  <h1 className="sm:text-xl md:text-2xl">{d.name}</h1>
-                    <div className="w-auto sm:h-3 bg-[#282828]"></div>
-                    <h1 className="text-base sm:text-xl font-light">{d.title}</h1>
-                    <h1 className="text-base sm:text-xl font-light">{d.class}</h1>
-                    <h1 className="text-base sm:text-xl font-light">{d.major}</h1>
-                    <div className="w-auto h-8 sm:h-20 bg-[#282828]"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-            </Slider>
+            <BoardMembersBlock />
           </div>
         </div>
 
@@ -154,7 +186,7 @@ export default function about() {
 }
 
 {/* BOARD MEMBERS AND HEADSHOTS */}
-const members = [
+const membersmap = [
   {
       name: 'Amy (she/they)',
       title: 'President',
@@ -242,4 +274,5 @@ function SamplePrevArrow(props) {
     />
   );
 }
+
 
