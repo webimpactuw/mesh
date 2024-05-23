@@ -77,7 +77,7 @@ export default function ArchivePage() {
                 <p>View photo albums and program booklets from past MESH events</p>
             </div>
             <div className="flex flex-row-reverse mr-10 mb-10">
-                <button onClick={handleSortToggle} class="bg-[#43B697] rounded-lg w-40 p-1 text-xl">
+                <button onClick={handleSortToggle} className="bg-[#43B697] rounded-lg w-40 p-1 text-xl">
                     sort by {sortBy === 'asc' ? '↑' : '↓'}
                 </button>
             </div>
