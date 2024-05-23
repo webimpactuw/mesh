@@ -13,6 +13,7 @@ const fabulous = localFont({
   display: 'swap',
 })
 
+// MEMBERS SANITY FUNCTIONS
 async function getMembers() {
 
   const query = `*[_type == "members"] {
@@ -77,6 +78,57 @@ function BoardMembersBlock() {
         </div>
       ))}
     </Slider>
+  );
+}
+
+// QUESTIONS SANITY FUNCTIONS
+async function getQuestions() {
+
+  const query = `*[_type == "questions"] {
+    question,
+    answer
+  }`
+
+  const questions = await client.fetch(query)
+  return questions;
+}
+
+function QuestionsBlock() {
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+      async function fetchQuestions() {
+          const fetchedQuestions = await getQuestions();
+          setQuestions(fetchedQuestions);
+      }
+
+      fetchQuestions();
+  }, []);
+
+  const allQuestions = [...questions];
+
+  return (
+    <div>
+      <div className = "wrapper">
+          <div className = "accordian">
+            
+              {questions.map((item, i) => (
+                <div className="item mt-3">
+                  <div className = "title" onClick={() => toggle(i)}>
+                    <h2>{item.question}</h2>
+                    <span>{selected === i ? '-' : '+'}</span>
+                  </div>
+
+                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
+                      {item.answer}
+                  </div>
+                </div>
+              ))}
+
+          </div>
+        </div>
+        <div className="h-10"></div>
+    </div>
   );
 }
 
@@ -162,25 +214,7 @@ export default function about() {
       </div>
 
       {/* SINGLE COLUMN FAQS */}
-      <div className = "wrapper">
-          <div className = "accordian">
-            
-              {questions.map((item, i) => (
-                <div className="item mt-3">
-                  <div className = "title" onClick={() => toggle(i)}>
-                    <h2>{item.question}</h2>
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
-
-                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
-                      {item.answer}
-                  </div>
-                </div>
-              ))}
-
-          </div>
-        </div>
-        <div className="h-10"></div>
+      <QuestionsBlock />
       </div>
   );
 }
