@@ -1,3 +1,7 @@
+import React from 'react'; 
+import Popup from 'reactjs-popup'; 
+import 'reactjs-popup/dist/index.css'
+
 /* eslint-disable @next/next/no-img-element */
 export default function LearnButton({link}) {
     const learn = () => {
@@ -11,6 +15,7 @@ export default function LearnButton({link}) {
         <button onClick={learn} class="text-[#FFFFFF] font-sans text-lg font-light">Learn More </button>
         <img src="/arrowup.png" alt="arrow" class="h-10"/>
         </a>
+        
     </div>
     );
 }
