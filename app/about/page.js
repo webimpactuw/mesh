@@ -59,7 +59,7 @@ function BoardMembersBlock() {
   return (
     <Slider {...settings}>
       {sortedMembers.map((d) => (
-        <div key={d._id} className = "mt-2 sm:mt-8 flex">
+        <div key={d.title} className = "mt-2 sm:mt-8 flex">
 
           {/* Headshot */}
           <div className = "mt-1 justify-end flex headshot">
@@ -131,7 +131,7 @@ function QuestionsBlock() {
           <div className = "accordian">
             
               {sortedQuestions.map((item, i) => (
-                <div key={item._id} className="item mt-3">
+                <div key={item.question} className="item mt-3">
                   <div className = "title" onClick={() => toggle(i)}>
                     <h2>{item.question}</h2>
                     <span>{selected === i ? '-' : '+'}</span>
