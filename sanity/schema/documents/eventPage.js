@@ -27,20 +27,14 @@ export default {
         },
         {
             name: 'altText',
-            title: 'Alternative picture Text',
-            type: 'string',
-            validation: (Rule) => Rule.required()
-        },
-        {
-            name: 'eventLink',
-            title: 'Event Link',
+            title: 'Alternative Picture Text',
             type: 'string',
             validation: (Rule) => Rule.required()
         },
         {
             name: 'time',
             title: 'Time',
-            type: 'datetime',
+            type: 'string',
             validation: (Rule) => Rule.required()
         },
         {
