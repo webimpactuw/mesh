@@ -156,7 +156,7 @@ export default function about() {
       <div className="h-8"></div>
     {/* ABOUT US */}
       <div className={fabulous.className}>
-        <h1 className="text-center text-white text-2xl sm:text-3xl">About Us</h1>
+        <h1 className="text-center text-white text-2xl sm:text-4xl">About Us</h1>
       </div>
 
       {/* FLEX GRID - IMAGES AND WHO ARE WE*/}
@@ -192,9 +192,9 @@ export default function about() {
           {/* Who Are We text info */}
           <h1 className="text-left text-white text-xl sm:text-2xl md:text-3xl">Who Are We?</h1>
           <div className="h-1 sm:h-3"></div>
-          <h1 className="text-left text-white font-light text-m sm:text-xl">MESH is a creative collective based at the University of Washington that centers fashion design education and exploration. </h1>
-          <h1 className="text-left text-white font-light text-m sm:text-xl">We aim to foster a lively community of fashion enthusiasts through beginner-friendly workshops, highly participatory large events, and networking/experience opportunities.  </h1>
-          <h1 className="text-left text-white font-light text-m sm:text-xl">Our headline event is an annual, student-run fashion show! </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl lg:text-2xl">MESH is a creative collective based at the University of Washington that centers fashion design education and exploration. </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl lg:text-2xl">We aim to foster a lively community of fashion enthusiasts through beginner-friendly workshops, highly participatory large events, and networking/experience opportunities.  </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl lg:text-2xl">Our headline event is an annual, student-run fashion show! </h1>
           </div>
           </div>
         </div>
