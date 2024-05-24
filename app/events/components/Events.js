@@ -15,7 +15,6 @@ export default function events({imageUrl, title, date}) {
 
                 <img src={urlForImage(imageUrl)} alt={title}/>
             </div>
-        {/* <LearnButton /> */}
         <BasicModal title={title} date={date} location="Location" time="5:00pm" description={'Description'} imageUrl={imageUrl} />
         </div>
     );
