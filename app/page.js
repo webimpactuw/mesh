@@ -32,13 +32,17 @@ export default async function Home() {
 
     <div>
       {/* Home Gallery */}
-      <div className="pt-4">
+      <div className="relative mt-4 lg:mt-9">
+        <div id="scroll-container" className="mt-0 -top-7 absolute w-full">
+          <div id="scroll-text" className="hidden text-white md:text-5xl lg:block font-light"> MESH MESH MESH MESH MESH MESH MESH </div>
+        </div>
         <div className="flex flex-row justify-between overflow-x-auto">
           <img src="/images/home1.png" className="h-72 sm:h-96 pr-2" alt="Mesh fashion show"></img>
           <img src="/images/home2.png" className="h-72 sm:h-96 px-2" alt="Mesh representatives"></img>
           <img src="/images/home3.png" className="h-72 sm:h-96 px-2" alt="Mesh fashion show"></img>
           <img src="/images/home4.png" className="h-72 sm:h-96 pl-2" alt="Mesh fashion show"></img>
         </div>
+        
         <div className="mt-5 text-white text-center text-xl mb-5">
           <p className="text-md">
             A collective of fashion designers & enthusiasts based at UW

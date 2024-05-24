@@ -46,7 +46,7 @@ function ArchiveBlock({sortBy}) {
     return (
         <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 items-center">
         {sortedArchives.map((archive) => (
-            <div key={archive._id} className="flex flex-col items-center">
+            <div key={archive.title} className="flex flex-col items-center">
                 <div className="flex items-center h-80 w-80 ">
                     <img src= {urlForImage(archive.image)} className="border-2 h-full w-full object-cover" alt={archive.alt} />
                 </div>
