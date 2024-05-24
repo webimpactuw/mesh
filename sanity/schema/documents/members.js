@@ -32,6 +32,12 @@ export default {
             title: 'Image',
             type: 'image',
             validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'createDate',
+            title: 'Creation Date',
+            type: 'datetime',
+            validation: (Rule) => Rule.required()
         }
     ],
 }
