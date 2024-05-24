@@ -24,9 +24,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
+      </head> */}
       <body className={jost.className}>
 
         <div className="hidden banner text-center text-white p-2 flex flex-row justify-center items-center font-bold">
