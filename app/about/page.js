@@ -22,6 +22,7 @@ async function getMembers() {
     class,
     major,
     image,
+    date
   }`
 
   const members = await client.fetch(query)
@@ -51,7 +52,7 @@ function BoardMembersBlock() {
   }, []);
 
   const sortedMembers = [...members].sort((a, b) => {
-    return new Date(a.createDate) - new Date(b.createDate);
+    return new Date(a.date) - new Date(b.date);
   });
 
   return (
@@ -89,7 +90,8 @@ async function getQuestions() {
 
   const query = `*[_type == "questions"] {
     question,
-    answer
+    answer,
+    date
   }`
 
   const questions = await client.fetch(query)
@@ -119,7 +121,7 @@ function QuestionsBlock() {
   }, []);
 
   const sortedQuestions = [...questions].sort((a, b) => {
-    return new Date(a.createDate) - new Date(b.createDate);
+    return new Date(a.date) - new Date(b.date);
   });
 
   return (
