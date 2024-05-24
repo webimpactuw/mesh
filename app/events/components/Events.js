@@ -11,7 +11,7 @@ export default function events({imageUrl, title, date}) {
             <h1 class="text-[#ADADAD] font-extralight">{date}</h1>
             </div>
             
-            <div class=" w-96 overflow-hidden  h-56 border-2 border-cyan-50">
+            <div class=" w-96 overflow-hidden h-56 border-2 border-cyan-50 "> 
 
                 <img src={urlForImage(imageUrl)} alt={title}/>
             </div>
