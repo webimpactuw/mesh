@@ -14,6 +14,12 @@ export default {
             title: 'Answer',
             type: 'string',
             validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'date',
+            title: 'Creation Date',
+            type: 'datetime',
+            validation: (Rule) => Rule.required()
         }
     ],
 }

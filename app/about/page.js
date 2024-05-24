@@ -13,6 +13,7 @@ const fabulous = localFont({
   display: 'swap',
 })
 
+// MEMBERS SANITY FUNCTIONS
 async function getMembers() {
 
   const query = `*[_type == "members"] {
@@ -21,6 +22,8 @@ async function getMembers() {
     class,
     major,
     image,
+    altText,
+    date
   }`
 
   const members = await client.fetch(query)
@@ -42,25 +45,28 @@ function BoardMembersBlock() {
   useEffect(() => {
       async function fetchMembers() {
           const fetchedMembers = await getMembers();
+          //fetchedMembers.sort((a, b) => new Date(a.createDate).getTime() - new Date(b.createDate).getTime());
           setMembers(fetchedMembers);
       }
 
       fetchMembers();
   }, []);
 
-  const allMembers = [...members];
+  const sortedMembers = [...members].sort((a, b) => {
+    return new Date(a.date) - new Date(b.date);
+  });
 
   return (
     <Slider {...settings}>
-      {allMembers.map((d) => (
-        <div className = "mt-2 sm:mt-8 flex">
+      {sortedMembers.map((d) => (
+        <div key={d._id} className = "mt-2 sm:mt-8 flex">
 
           {/* Headshot */}
           <div className = "mt-1 justify-end flex headshot">
             <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#43B697]"></div>
             <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#282828]"></div>
             {/* Image */}
-            <img src={urlForImage(d.image)} alt="" className="h-20 w-20 sm:h-44 sm:w-44 border border-white"/>
+            <img src={urlForImage(d.image)} alt={d.altText} className="h-20 w-20 sm:h-44 sm:w-44 border border-white"/>
           </div>
 
           {/* Board Member Information */}
@@ -80,7 +86,21 @@ function BoardMembersBlock() {
   );
 }
 
-export default function about() {
+// QUESTIONS SANITY FUNCTIONS
+async function getQuestions() {
+
+  const query = `*[_type == "questions"] {
+    question,
+    answer,
+    date
+  }`
+
+  const questions = await client.fetch(query)
+  return questions;
+}
+
+function QuestionsBlock() {
+  const [questions, setQuestions] = useState([]);
   const [selected, setSelected] = useState(null)
 
   const toggle = (i) => {
@@ -91,12 +111,53 @@ export default function about() {
     setSelected(i)
   }
 
+  useEffect(() => {
+      async function fetchQuestions() {
+          const fetchedQuestions = await getQuestions();
+          //fetchedQuestions.sort((a, b) => new Date(a.createDate).getTime() - new Date(b.createDate).getTime());
+          setQuestions(fetchedQuestions);
+      }
+
+      fetchQuestions();
+  }, []);
+
+  const sortedQuestions = [...questions].sort((a, b) => {
+    return new Date(a.date) - new Date(b.date);
+  });
+
+  return (
+    <div>
+      <div className = "wrapper">
+          <div className = "accordian">
+            
+              {sortedQuestions.map((item, i) => (
+                <div key={item._id} className="item mt-3">
+                  <div className = "title" onClick={() => toggle(i)}>
+                    <h2>{item.question}</h2>
+                    <span>{selected === i ? '-' : '+'}</span>
+                  </div>
+
+                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
+                      {item.answer}
+                  </div>
+                </div>
+              ))}
+
+          </div>
+        </div>
+        <div className="h-10"></div>
+    </div>
+  );
+}
+
+export default function about() {
+
   return (
     <div>
       <div className="h-8"></div>
     {/* ABOUT US */}
       <div className={fabulous.className}>
-        <h1 className="text-center text-white text-2xl sm:text-3xl">About Us</h1>
+        <h1 className="text-center text-white text-2xl sm:text-4xl">About Us</h1>
       </div>
 
       {/* FLEX GRID - IMAGES AND WHO ARE WE*/}
@@ -129,12 +190,12 @@ export default function about() {
           {/* Green line */}
           <div className="w-1/2 h-2 bg-[#43B697]"></div>
           <div className="h-3"></div>
-
+          {/* Who Are We text info */}
           <h1 className="text-left text-white text-xl sm:text-2xl md:text-3xl">Who Are We?</h1>
           <div className="h-1 sm:h-3"></div>
-          <h1 className="text-left text-white font-light text-m sm:text-xl">MESH is a creative collective based at the University of Washington that centers fashion design education and exploration. </h1>
-          <h1 className="text-left text-white font-light text-m sm:text-xl">We aim to foster a lively community of fashion enthusiasts through beginner-friendly workshops, highly participatory large events, and networking/experience opportunities.  </h1>
-          <h1 className="text-left text-white font-light text-m sm:text-xl">Our headline event is an annual, student-run fashion show! </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl lg:text-2xl">MESH is a creative collective based at the University of Washington that centers fashion design education and exploration. </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl lg:text-2xl">We aim to foster a lively community of fashion enthusiasts through beginner-friendly workshops, highly participatory large events, and networking/experience opportunities.  </h1>
+          <h1 className="text-left text-white font-light text-m sm:text-xl lg:text-2xl">Our headline event is an annual, student-run fashion show! </h1>
           </div>
           </div>
         </div>
@@ -162,30 +223,12 @@ export default function about() {
       </div>
 
       {/* SINGLE COLUMN FAQS */}
-      <div className = "wrapper">
-          <div className = "accordian">
-            
-              {questions.map((item, i) => (
-                <div className="item mt-3">
-                  <div className = "title" onClick={() => toggle(i)}>
-                    <h2>{item.question}</h2>
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
-
-                  <div className = {selected === i ? 'content-show font-light' : 'content'}>
-                      {item.answer}
-                  </div>
-                </div>
-              ))}
-
-          </div>
-        </div>
-        <div className="h-10"></div>
+      <QuestionsBlock />
       </div>
   );
 }
 
-{/* BOARD MEMBERS AND HEADSHOTS */}
+{/* NOT USED - BOARD MEMBERS AND HEADSHOTS */}
 const membersmap = [
   {
       name: 'Amy (she/they)',
@@ -224,7 +267,30 @@ const membersmap = [
 },
 ];
 
-{/* FAQS AND ANSWERS */}
+{/* CUSTOM ARROWS */}
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "gray-200" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "gray-200" }}
+      onClick={onClick}
+    />
+  );
+}
+
+{/* NOT USED - FAQS AND ANSWERS */}
 const questions = [
   {
     question: 'What does MESH do?',
@@ -252,27 +318,5 @@ const questions = [
   }
 ];
 
-{/* CUSTOM ARROWS */}
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "gray-200" }}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "gray-200" }}
-      onClick={onClick}
-    />
-  );
-}
 
 

@@ -26,7 +26,7 @@ async function getEvents() {
 
 export default async function Home() {
   const events = await getEvents();
-  console.log(events)
+  // console.log(events)
 
   return (
 
@@ -55,7 +55,7 @@ export default async function Home() {
         <div className="flex flex-row justify-center mb-6 space-x-8 mx-24">
           <div className="items-center">
             <div className="line"></div>
-            <div className="h-80 w-96 overflow-hidden">
+            <div className="events-home overflow-hidden">
               <img src={urlForImage(events[0].image)} alt={events[0].altText} className="border border-solid border-white w-full h-full object-cover"></img>
             </div>
             <p className="text-white text-center font-light text-2xl pt-2">{events[0].title}</p>
@@ -69,7 +69,7 @@ export default async function Home() {
           <div className="hidden sm:block items-center">
             <div className="items-center">
               <div className="line"></div>
-              <div className="h-80 w-96 overflow-hidden">
+              <div className="events-home overflow-hidden">
                 <img src={urlForImage(events[1].image)} alt={events[1].altText} className="border border-solid border-white w-full h-full object-cover"></img>
               </div>
               <p className="text-white text-center font-light text-2xl pt-2">{events[1].title}</p>
@@ -84,7 +84,7 @@ export default async function Home() {
           <div className="hidden xl:block items-center">
             <div className="items-center">
               <div className="line"></div>
-              <div className="h-80 w-96 overflow-hidden">
+              <div className="events-home overflow-hidden">
                 <img src={urlForImage(events[2].image)} alt={events[2].altText} className="border border-solid border-white w-full h-full object-cover"></img>
               </div>
               <p className="text-white text-center font-light text-2xl pt-2">{events[2].title}</p>
@@ -105,11 +105,11 @@ export default async function Home() {
 
 
       {/* Instagram Feed */}
-      {/* <div className="mb-4 mx-12 sm:mx-24">
+      <div className="mb-4 mx-24">
         <div className={fabulous.className}>
           <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-white justify-center items-center justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-white justify-center items-center justify-items-center">
           <InstagramFeed />
         </div>
         <div className="flex justify-center">
@@ -117,41 +117,6 @@ export default async function Home() {
             <a href="https://www.instagram.com/mesh.uw/?hl=en">View Full Feed</a>
           </button>
         </div>
-      </div> */}
-
-      <div className="mb-4 mx-24">
-        <div className={fabulous.className}>
-          <h1 className="text-center text-white text-3xl mt-4 mb-4">Instagram Feed</h1>
-        </div>
-        <div className="grid grid-cols-3 gap-2 text-white">
-
-          <div className="flex justify-center items-center m-2">
-            <img className="h-auto max-w-full border" src="insta/insta1.jpg"></img>
-          </div>
-
-          <div className="flex justify-center items-center m-2">
-            <img className="h-auto max-w-full border" src="insta/insta2.jpg"></img>
-          </div>
-
-          <div className="flex justify-center items-center m-2">
-            <img className="h-auto max-w-full border" src="insta/insta3.jpg"></img>
-          </div>
-
-          <div className="flex justify-center items-center m-2">
-            <img className="h-auto max-w-full border" src="insta/insta4.jpg"></img>
-          </div>
-
-          <div className="flex justify-center items-center m-2">
-            <img className="h-auto max-w-full border" src="insta/insta5.jpg"></img>
-          </div>
-
-          <div className="flex justify-center items-center m-2">
-            <img className="h-auto max-w-full border" src="insta/insta6.jpg"></img>
-          </div>
-        </div>
-        <div className="flex justify-center">
-            <button className="border font-light rounded px-4 py-2 m-6 text-white"><a href="https://www.instagram.com/mesh.uw/?hl=en">View Full Feed</a></button>
-          </div>
       </div>
 
     </div>
@@ -167,12 +132,12 @@ async function InstagramFeed() {
   try {
     const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=${process.env.IG_TOKEN}`;
     const data = await fetch(url);
-    console.log("data", data);
+    // console.log("data", data);
     if (!data.ok) { 
       throw new Error("Failed to fetch Instagram feed");
     }
     instagramFeed = await data.json();
-    console.log("Instagram feed:", instagramFeed);
+    // console.log("Instagram feed:", instagramFeed);
   } catch (err) {
     console.error("Error fetching Instagram feed:", err.message);
     error = err.message;
@@ -191,7 +156,7 @@ async function InstagramFeed() {
             <video
               src={post.media_url}
               controls={false}
-              className="object-cover "
+              className="object-cover"
             />
           ) : (
             <Image
