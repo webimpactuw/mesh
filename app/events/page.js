@@ -153,6 +153,7 @@ export default function EventPage() {
         <Bio imageUrl="/audience.png" />
       </div>
 
+
       <div class="flex flex-col ml-28 overflow-hidden">
       {/* <EventsMap /> */}
       {/* <GetEventsS /> */}
@@ -165,6 +166,7 @@ export default function EventPage() {
                 <EventBlock sortBy={sortBy}/>
              </div>
         
+
         
       </div>
     </div>
