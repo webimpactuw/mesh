@@ -22,6 +22,7 @@ async function getMembers() {
     class,
     major,
     image,
+    altText,
     date
   }`
 
@@ -65,7 +66,7 @@ function BoardMembersBlock() {
             <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#43B697]"></div>
             <div className="w-1 h-20 sm:h-44 sm:w-2 bg-[#282828]"></div>
             {/* Image */}
-            <img src={urlForImage(d.image)} alt="" className="h-20 w-20 sm:h-44 sm:w-44 border border-white"/>
+            <img src={urlForImage(d.image)} alt={d.altText} className="h-20 w-20 sm:h-44 sm:w-44 border border-white"/>
           </div>
 
           {/* Board Member Information */}

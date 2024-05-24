@@ -34,6 +34,12 @@ export default {
             validation: (Rule) => Rule.required()
         },
         {
+            name: 'altText',
+            title: 'Alt Text',
+            type: 'string',
+            validation: (Rule) => Rule.required()
+        },
+        {
             name: 'date',
             title: 'Creation Date',
             type: 'datetime',
