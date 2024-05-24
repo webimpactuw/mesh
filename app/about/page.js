@@ -43,17 +43,20 @@ function BoardMembersBlock() {
   useEffect(() => {
       async function fetchMembers() {
           const fetchedMembers = await getMembers();
+          //fetchedMembers.sort((a, b) => new Date(a.createDate).getTime() - new Date(b.createDate).getTime());
           setMembers(fetchedMembers);
       }
 
       fetchMembers();
   }, []);
 
-  const allMembers = [...members];
+  const sortedMembers = [...members].sort((a, b) => {
+    return new Date(a.createDate) - new Date(b.createDate);
+  });
 
   return (
     <Slider {...settings}>
-      {allMembers.map((d) => (
+      {sortedMembers.map((d) => (
         <div className = "mt-2 sm:mt-8 flex">
 
           {/* Headshot */}
@@ -108,20 +111,23 @@ function QuestionsBlock() {
   useEffect(() => {
       async function fetchQuestions() {
           const fetchedQuestions = await getQuestions();
+          //fetchedQuestions.sort((a, b) => new Date(a.createDate).getTime() - new Date(b.createDate).getTime());
           setQuestions(fetchedQuestions);
       }
 
       fetchQuestions();
   }, []);
 
-  const allQuestions = [...questions];
+  const sortedQuestions = [...questions].sort((a, b) => {
+    return new Date(a.createDate) - new Date(b.createDate);
+  });
 
   return (
     <div>
       <div className = "wrapper">
           <div className = "accordian">
             
-              {allQuestions.map((item, i) => (
+              {sortedQuestions.map((item, i) => (
                 <div className="item mt-3">
                   <div className = "title" onClick={() => toggle(i)}>
                     <h2>{item.question}</h2>
