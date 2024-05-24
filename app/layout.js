@@ -12,7 +12,7 @@ const fabulous = localFont({
 const jost = Jost({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['300', '400', '600'], 
+  weight: ['300', '400', '600'],
 })
 
 
@@ -24,7 +24,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      
+      {/* <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head> */}
       <body className={jost.className}>
 
         <div className="hidden banner text-center text-white p-2 flex flex-row justify-center items-center font-bold">
@@ -38,11 +40,11 @@ export default function RootLayout({ children }) {
         </div>
 
         <div className={fabulous.className}>
-          <Navbar/>
+          <Navbar />
         </div>
-        {children} 
+        {children}
         <div>
-          <Footer/>
+          <Footer />
         </div>
       </body>
     </html>
