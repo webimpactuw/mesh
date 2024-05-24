@@ -23,24 +23,22 @@ export default {
             name: 'image',
             title: 'Image',
             type: 'image',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
+            options: {
+                hotspot: true,
+                crop: true,
+            },
+        },
+        {
+            name: 'mainImage',
+            type: 'boolean',
+            title: 'Main Image',
+            validation: (Rule) => Rule.required(),
         },
         {
             name: 'altText',
-            title: 'Alternative picture Text',
+            title: 'Alternative Picture Text',
             type: 'string',
-            validation: (Rule) => Rule.required()
-        },
-        {
-            name: 'eventLink',
-            title: 'Event Link',
-            type: 'string',
-            validation: (Rule) => Rule.required()
-        },
-        {
-            name: 'time',
-            title: 'Time',
-            type: 'datetime',
             validation: (Rule) => Rule.required()
         },
         {
@@ -53,6 +51,12 @@ export default {
             name: 'description',
             title: 'Description',
             type: 'text',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'time',
+            title: 'Time',
+            type: 'string',
             validation: (Rule) => Rule.required()
         },
     ],
