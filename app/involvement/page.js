@@ -81,7 +81,7 @@ export default async function Home() {
 
           </div>
           <div className="flex flex-col items-center justify-center pt-10 md:pt-0">
-            <a href="https://linktr.ee/mesh.uw" target="_blank" rel="noopener noreferrer">
+            <a href="https://venmo.com/u/MESH-UW" target="_blank" rel="noopener noreferrer">
               <button className="sm:text-2xl lg:text-4xl button-color hover:bg-white text-black py-0.25 md:py-2 px-16 rounded-full focus:outline-none focus:shadow-outline" type="button">
                 Link
               </button>
